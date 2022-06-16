@@ -1,0 +1,175 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "电能表高压线弹簧10启停故障_事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 10,
+            "sendParam": "",
+            "sendTemplate": "014电能表高压线弹簧10启停故障告警：级别1，状态为: ${POSbkCls},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 10,
+            "sendParam": "",
+            "sendTemplate": "014电能表高压线弹簧10启停故障告警：级别1，状态为: ${POSbkCls},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "电能表高压线弹簧10启停故障_上一周期值等于0.0",
+            "value": "0.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "12"
+            },
+            "start": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "2"
+            }
+          },
+          {
+            "name": "电能表高压线弹簧10启停故障_当前值发生变化不等于上一周期的值",
+            "value": "",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "15"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            },
+            "end": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "2"
+            }
+          },
+          {
+            "name": "电能表高压线弹簧10启停故障_合并",
+            "value": "",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "domain": "EMS",
+              "metric": "电能表高压线弹簧10启停故障_上一周期值等于0.0",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "domain": "EMS",
+              "metric": "电能表高压线弹簧10启停故障_当前值发生变化不等于上一周期的值",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 2,
+          "expType": 3,
+          "durationValue": 1,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "014电能表高压线弹簧10启停故障告警恢复：状态为: ${POSbkCls},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "014电能表高压线弹簧10启停故障告警恢复：状态为: ${POSbkCls},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "电能表高压线弹簧10启停告警恢复_两个周期内连续两次正常等于0.0",
+        "value": "0.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "12"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE390",
+          "locationId": "PARK1037_EMS01",
+          "metric": "POSbkCls",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 2,
+      "expType": 3,
+      "durationValue": 2,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则014描述_电能表高压线弹簧10启停故障03",
+  "ruleName": "规则014_电能表高压线弹簧10启停故障03_rain"
+}

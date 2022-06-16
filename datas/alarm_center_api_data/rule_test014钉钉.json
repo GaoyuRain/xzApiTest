@@ -1,0 +1,121 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1,test014规则，当前电压大于200，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          },
+          {
+            "receiveTenant": "rain的企业",
+            "receiveUser": "https://oapi.dingtalk.com/robot/send?access_token=ba5978b7193c5a8ae7ede84b281a5b7317205d979642923d0f59098ad9ab5141",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1,test014规则，当前电压大于200，当前电压为: ${Ua},(钉钉机器人)",
+            "sendType": 5
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值大于200",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE11",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 180,
+        "sendParam": "",
+        "sendTemplate": "告警恢复：级别1,test014规则，当前电压小于200，当前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      },
+      {
+        "receiveTenant": "rain的企业",
+        "receiveUser": "https://oapi.dingtalk.com/robot/send?access_token=ba5978b7193c5a8ae7ede84b281a5b7317205d979642923d0f59098ad9ab5141",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 180,
+        "sendParam": "",
+        "sendTemplate": "告警恢复：级别1,test014规则，当前电压小于200，当前电压为: ${Ua},(钉钉机器人)",
+        "sendType": 5
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_当前值大于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "11"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE11",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "ruletest014_钉钉",
+  "ruleName": "ruletest014_钉钉"
+}

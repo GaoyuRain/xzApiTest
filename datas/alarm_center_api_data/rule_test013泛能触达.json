@@ -1,0 +1,141 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 300,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1,test013规则，当前电压大于200，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          },
+          {
+            "receiveTenant": "1367677007133487106",
+            "receiveUser": "1402210974244356098",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "{\"equip\": \"METE_METE11\",\"enterpriseId\": \"1367677007133487106\",\"equipName\": \"浙江省府行政中心/测试电表\",\"equipId\": \"METE_METE11\",\"equipType\": \"仪表类\",\"stationName\": \"浙江省行政中心\",\"stationId\": \"PARK1037_EMS01\",\"systemName\": \"浙江省行政中心\",\"systemCode\": \"PARK1037_EMS01\",\"alarmTags\": \"告警标签\"}",
+            "sendTemplate": "告警：级别1，浙江省府,test013规则，当前电压大于200，当前电压为: ${Ua},(泛能网告警推送 站内信)",
+            "sendType": 1
+          },
+          {
+            "receiveTenant": "1367677007133487106",
+            "receiveUser": "1402210974244356098",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "{\"equip\": \"METE_METE11\",\"enterpriseId\": \"1367677007133487106\",\"equipName\": \"浙江省府行政中心/测试电表\",\"equipId\": \"METE_METE11\",\"equipType\": \"仪表类\",\"stationName\": \"浙江省行政中心\",\"stationId\": \"PARK1037_EMS01\",\"systemName\": \"浙江省行政中心\",\"systemCode\": \"PARK1037_EMS01\",\"alarmTags\": \"告警标签\"}",
+            "sendTemplate": "告警：级别1,浙江省府,test013规则，当前电压大于200，当前电压为: ${Ua},(泛能网友盟告警推送, app)",
+            "sendType": 2
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值大于200",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE11",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：test013规则，Ua电压过限恢复，当前电压小于200， 目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      },
+      {
+        "receiveTenant": "1367677007133487106",
+        "receiveUser": "1402210974244356098",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "{\"equip\": \"METE_METE11\",\"enterpriseId\": \"1367677007133487106\",\"equipName\": \"恢复标题-浙江省府行政中心/测试电表\",\"equipId\": \"METE_METE11\",\"equipType\": \"METE\",\"stationName\": \"浙江省行政中心\",\"stationId\": \"PARK1037_EMS01\",\"systemName\": \"浙江省行政中心\",\"systemCode\": \"PARK1037_EMS01\",\"alarmTags\": \"告警标签1，告警标签2\"}",
+        "sendTemplate": "告警恢复：浙江省府,test013规则，当前电压已恢复，当前电压小于200，，当前电压为: ${Ua},(泛能网告警推送 站内信)",
+        "sendType": 1
+      },
+      {
+        "receiveTenant": "1367677007133487106",
+        "receiveUser": "1402210974244356098",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "{\"equip\": \"METE_METE11\",\"enterpriseId\": \"1367677007133487106\",\"equipName\": \"恢复标题-浙江省府行政中心/测试电表\",\"equipId\": \"METE_METE11\",\"equipType\": \"METE\",\"stationName\": \"浙江省行政中心\",\"stationId\": \"PARK1037_EMS01\",\"systemName\": \"浙江省行政中心\",\"systemCode\": \"PARK1037_EMS01\",\"alarmTags\": \"告警标签1，告警标签2\"}",
+        "sendTemplate": "告警恢复：浙江省府，test013规则，当前电压已恢复，当前电压小于200，，当前电压为: ${Ua},(泛能网友盟告警推送, app)",
+        "sendType": 2
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_当前值小于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "11"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE11",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "ruleDesc": "ruletest013_泛能触达07",
+  "ruleName": "ruletest013_泛能触达07",
+  "status": 0
+}

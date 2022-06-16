@@ -1,0 +1,65 @@
+{
+  "uid" : "9a76a88cbcb2275e",
+  "name" : "test_upload_api[params1]",
+  "fullName" : "script.test_template.TestTemplate#test_upload_api",
+  "historyId" : "df0403ce2f6c08332917acd562649222",
+  "time" : {
+    "start" : 1626688897570,
+    "stop" : 1626688897570,
+    "duration" : 0
+  },
+  "status" : "broken",
+  "statusMessage" : "FileNotFoundError: [Errno 2] No such file or directory: '../image/template1.png'",
+  "statusTrace" : "self = <script.test_template.TestTemplate object at 0x0000019DDCAC3280>\nparams = {'formwork_name': '', 'specific_type': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280,...730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', ...}\n\n    @pytest.mark.parametrize('params', ParamsUtils.get_template_upload_api())\n    @allure.story('测试模板上传api接口')\n    def test_upload_api(self, params: dict):\n        values = params.get('values')\n        allure.step(values)\n        params.pop('values')\n>       r = TemplateRecognizeApi.upload_pic_api1(params)\n\nscript\\test_template.py:22: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncls = <class 'api.template_recognize_api.TemplateRecognizeApi'>\nparams = {'formwork_name': '', 'specific_type': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280,...730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', ...}\n\n    @classmethod\n    def upload_pic_api1(cls, params) -> Response:\n        # custom-d5581a4f45074128ad8fb7213db42317\n    \n        url = 'http://open-platform-gateway.dev.ennewi.cn' + \"/cv/ocr\" + '/template_upload'\n        header = {\n            'X-GW-Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6Ik82MWZWTVdpIiwiZXhwIjoxNjI2NzQ3MzMwfQ.Zv5JHxE7r_Pagd0Vmt8EBGVu2lAkJLHrtsJELZLSVx0'}\n    \n>       with open('../image/template1.png', 'rb') as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '../image/template1.png'\n\napi\\template_recognize_api.py:24: FileNotFoundError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "测试模板上传api接口"
+  }, {
+    "name" : "feature",
+    "value" : "测试自定义模板ocr识别api"
+  }, {
+    "name" : "parentSuite",
+    "value" : "script"
+  }, {
+    "name" : "suite",
+    "value" : "test_template"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestTemplate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-2M337UE"
+  }, {
+    "name" : "thread",
+    "value" : "9256-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "script.test_template"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "params",
+    "value" : "{'formwork_name': '', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280, 250, 1360, 305], \"\\\\u6761\\\\u7801\\\\u53f7\": [1760, 250, 2016, 305], \"\\\\u59d3\\\\u540d\": [188, 310, 370, 360], \"\\\\u75c5\\\\u4eba\\\\u7c7b\\\\u522b\": [620, 310, 800, 360], \"\\\\u79d1\\\\u522b\": [930, 310, 1150, 360], \"\\\\u9001\\\\u68c0\\\\u533b\\\\u751f\": [1360, 310, 1550, 360], \"\\\\u6837\\\\u672c\\\\u7c7b\\\\u578b\": [1730, 310, 2016, 360], \"\\\\u6027\\\\u522b\": [188, 360, 300, 405], \"\\\\u75c5\\\\u4eba\\\\u7535\\\\u8bdd\": [620, 360, 800, 405], \"\\\\u5e8a\\\\u53f7\": [930, 360, 1150, 405], \"\\\\u533b\\\\u751f\\\\u7535\\\\u8bdd\": [1360, 360, 1550, 405], \"\\\\u6837\\\\u672c\\\\u72b6\\\\u6001\": [1730, 360, 2016, 405], \"\\\\u5e74\\\\u9f84\": [188, 405, 300, 455], \"\\\\u95e8\\\\u8bca/\\\\u4f4f\\\\u9662\\\\u53f7\": [670, 405, 1150, 455], \"\\\\u4e34\\\\u5e8a\\\\u8bca\\\\u65ad\": [1360, 405, 2016, 455]}, \"table_content\": {\"table_name\": \"\\\\u68c0\\\\u6d4b\\\\u62a5\\\\u544a\", \"table_location\": [70, 470, 2016, 2600], \"title_location\": [70, 470, 2016, 525], \"title_names\": [\"\\\\u9879\\\\u76ee\\\\u540d\\\\u79f0\", \"\\\\u9879\\\\u76ee\\\\u7b80\\\\u79f0\", \"\\\\u7ed3\\\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_method': 'custom', 'specific_type': '', 'values': '测试模板名称为空'}"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "9a76a88cbcb2275e.json",
+  "parameterValues" : [ "{'formwork_name': '', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280, 250, 1360, 305], \"\\\\u6761\\\\u7801\\\\u53f7\": [1760, 250, 2016, 305], \"\\\\u59d3\\\\u540d\": [188, 310, 370, 360], \"\\\\u75c5\\\\u4eba\\\\u7c7b\\\\u522b\": [620, 310, 800, 360], \"\\\\u79d1\\\\u522b\": [930, 310, 1150, 360], \"\\\\u9001\\\\u68c0\\\\u533b\\\\u751f\": [1360, 310, 1550, 360], \"\\\\u6837\\\\u672c\\\\u7c7b\\\\u578b\": [1730, 310, 2016, 360], \"\\\\u6027\\\\u522b\": [188, 360, 300, 405], \"\\\\u75c5\\\\u4eba\\\\u7535\\\\u8bdd\": [620, 360, 800, 405], \"\\\\u5e8a\\\\u53f7\": [930, 360, 1150, 405], \"\\\\u533b\\\\u751f\\\\u7535\\\\u8bdd\": [1360, 360, 1550, 405], \"\\\\u6837\\\\u672c\\\\u72b6\\\\u6001\": [1730, 360, 2016, 405], \"\\\\u5e74\\\\u9f84\": [188, 405, 300, 455], \"\\\\u95e8\\\\u8bca/\\\\u4f4f\\\\u9662\\\\u53f7\": [670, 405, 1150, 455], \"\\\\u4e34\\\\u5e8a\\\\u8bca\\\\u65ad\": [1360, 405, 2016, 455]}, \"table_content\": {\"table_name\": \"\\\\u68c0\\\\u6d4b\\\\u62a5\\\\u544a\", \"table_location\": [70, 470, 2016, 2600], \"title_location\": [70, 470, 2016, 525], \"title_names\": [\"\\\\u9879\\\\u76ee\\\\u540d\\\\u79f0\", \"\\\\u9879\\\\u76ee\\\\u7b80\\\\u79f0\", \"\\\\u7ed3\\\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_method': 'custom', 'specific_type': '', 'values': '测试模板名称为空'}" ]
+}

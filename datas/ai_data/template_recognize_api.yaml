@@ -1,0 +1,20 @@
+#模板名称
+formwork_name:	string	是
+#模板类型，默认：基于位置，基于位置：location
+type: location	是
+#模板图片文件
+template_image:	file	是
+#模板四个参考字段及字段位置信息
+template_coordinate:
+#模板文字内容，包括文字内容的名称+位置信息（左上、右下的x、y坐标）
+text_content:	string	否
+#text_content和table_content，二者不可都为空。模板表格内容，包括表格名称、表格位置信息、标题位置信息、标题文字内容
+#table_content	string	否
+#+table_name	string	否
+#表格名称。当table_content不为空，此项必填。
+#+table_location	string	否
+#表格位置信息（左上、右下的x、y坐标）。当table_content不为空，此项必填。
+#+title_location	string	否
+#表格标题的位置信息（左上、右下的x、y坐标）。当table_content不为空，此项必填。
+#+title_names	string	否
+#表格标题的各个文字内容。当table_content不为空，此项必填。

@@ -1,0 +1,56 @@
+[
+  {
+    "alarm": {
+      "timeRule": {
+        "cyclecategory": "1"
+      },
+      "rules": [
+        {
+          "ruleName": "小于10001",
+          "enkvs": {
+            "start": {
+              "point": "P",
+              "nodeType": 1,
+              "type": "1",
+              "startOrEnd": true
+            },
+            "operation": {
+              "type": 1,
+              "symbol": "11"
+            },
+            "comparativetype": "2",
+            "absolute": 10001
+          }
+        }
+      ]
+    },
+    "instanceId": 920397707585433600,
+    "recover": {
+      "timeRule": {
+        "cyclecategory": "1"
+      },
+      "rules": [
+        {
+          "ruleName": "大于10001恢复规则",
+          "enkvs": {
+            "start": {
+              "point": "P",
+              "nodeType": 1,
+              "type": "1",
+              "startOrEnd": true
+            },
+            "operation": {
+              "type": 1,
+              "symbol": "13"
+            },
+            "comparativetype": "2",
+            "absolute": 10001
+          }
+        }
+      ]
+    },
+    "userInfo": {
+      "openid": "1468908265805365250"
+    }
+  }
+]

@@ -1,0 +1,364 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 240,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1，test010规则，当前值大于200小于等于250，当前电压为: ${Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 240,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1,test010规则，当前值大于200小于等于250，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值大于200",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点阈值告警_当前值小于等于250",
+            "value": "250",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "14"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点阈值告警_当前值大于200小于等于250",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "ruleType": "2",
+              "metric": "单测点阈值告警_当前值大于200",
+              "type": "1"
+            },
+            "end": {
+              "ruleType": "2",
+              "metric": "单测点阈值告警_当前值小于等于250",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别1已升级，目前电压为: ${Ua},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别1已升级，目前电压为: ${Ua},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "levelUpTime": 0
+    },
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别2，test010规则，当前值大于250小于等于300，当前电压为: ${Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别2，test010规则，当前值大于250小于等于300，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值大于250",
+            "value": "250",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点阈值告警_当前值小于等于300",
+            "value": "300",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "14"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点阈值告警_当前值大于250小于等于300",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "ruleType": "2",
+              "metric": "单测点阈值告警_当前值大于250",
+              "type": "1"
+            },
+            "end": {
+              "ruleType": "2",
+              "metric": "单测点阈值告警_当前值小于等于300",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 2,
+      "levelUpSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别2已升级，目前电压为: ${Ua},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别2已升级，目前电压为: ${Ua},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "levelUpTime": 0
+    },
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别3，test010规则，当前值大于300，当前电压为: ${Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 180,
+            "sendParam": "",
+            "sendTemplate": "告警：级别3，test010规则，当前值大于300，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值大于300",
+            "value": "300",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 3,
+      "levelUpSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别3已升级，目前电压为: ${Ua},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test010规则，级别3已升级，目前电压为: ${Ua},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "15225111055",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复,当前值小于200，目前电压为: ${Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复，当前值小于200， 目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_当前值小于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "11"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "ruletest010_不同级别触达03",
+  "ruleName": "ruletest010_不同级别触达03"
+}

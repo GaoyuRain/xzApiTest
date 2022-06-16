@@ -1,0 +1,34 @@
+alarmEndTime: '2021-11-26 23:59:59'
+alarmIdList: ''
+alarmMainLevel: ''
+alarmStartTime: '2021-11-01 00:00:00'
+alarmStatusCombinationBoList:
+  - hasRecovery: ''
+    status: ''
+alarmTagsBo:
+  likeAlarmTagsList: ''
+  notLikeAlarmTagsList: ''
+curPage: 0
+entityIdList: ''
+equipParentTypeList: ''
+equipSonTypeList: ''
+groupParamList: alarm_main_level
+hasRecovery: ''
+isShow: '0'
+likeAlarmTags: 配电代运维业务线
+likeAlarmTagsList: ''
+likeAlarmTitleList: ''
+likeEquipName: ''
+multiIfAlarmTagsMap: { }
+multiIfAlarmTagsMapEnd: ''
+notLikeAlarmTagsList: ''
+orderParamMap: { }
+pageSize: 0
+ruleEntIdList: 1367677007133487106,1367677007133487105
+selectParamMap:
+  alarm_main_level: alarmLevel
+  count(alarm_main_level): value
+status: ''
+subTenantId: ''
+systemCodeList: ''
+tenantId: fanNeng

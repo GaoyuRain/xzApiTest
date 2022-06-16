@@ -1,0 +1,176 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "服务调用次数",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "mouldId": "1461274673277964288",
+            "sendFrequency": 120
+          },
+          {
+            "mouldId": "1462727337547272192",
+            "sendFrequency": 120
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "服务调用次数小于70000次",
+            "value": "70000.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "APM",
+              "entityId": "alarm-center",
+              "locationId": "1369923265280311297",
+              "metric": "service_cpm",
+              "ruleType": "0",
+              "tag": "service",
+              "type": "1"
+            }
+          },
+          {
+            "name": "服务调用次数大于等于60000次",
+            "value": "60000.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "13"
+            },
+            "start": {
+              "domain": "APM",
+              "entityId": "alarm-center",
+              "locationId": "1369923265280311297",
+              "metric": "service_cpm",
+              "ruleType": "0",
+              "tag": "service",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点区间告警_逻辑组合and",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "metric": "服务调用次数小于70000次",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "服务调用次数大于等于60000次",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "mouldId": "1461274673277964288",
+        "sendFrequency": 120
+      },
+      {
+        "mouldId": "1462727337547272192",
+        "sendFrequency": 120
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "服务调用次数大于等于70000次",
+        "value": "70000.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "APM",
+          "entityId": "alarm-center",
+          "locationId": "1369923265280311297",
+          "metric": "service_cpm",
+          "ruleType": "0",
+          "tag": "service",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "timeRecover": {
+    "expContent": "180",
+    "ruleType": 2,
+    "alarmSendConfigBOs": [
+      {
+        "mouldId": "1461274673277964288",
+        "sendFrequency": 120
+      },
+      {
+        "mouldId": "1462727337547272192",
+        "sendFrequency": 120
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "服务调用次数大于等于70000次",
+        "value": "70000.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "APM",
+          "entityId": "alarm-center",
+          "locationId": "1369923265280311297",
+          "metric": "service_cpm",
+          "ruleType": "0",
+          "tag": "service",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "ruleType": 2,
+      "cycleNum": 1,
+      "expType": 0,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "tenantId": "APM",
+  "status": 0,
+  "createFbwork": 1,
+  "ruleDesc": "APM告警自动恢复001",
+  "ruleName": "APM告警自动恢复001"
+}

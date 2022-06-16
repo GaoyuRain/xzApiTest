@@ -1,0 +1,95 @@
+{
+  "domain": "test",
+  "expressionBOS": [
+    {
+      "alarmSendConfigBOs": [
+        {
+          "receiveUser": "yexianduan",
+          "receiveTenant": "ennew",
+          "sendType": 1
+        },
+        {
+          "receiveUser": "liu",
+          "receiveTenant": "ennew1",
+          "sendType": 2
+        }
+      ],
+      "calculationExpBOS": [
+        {
+          "value": "18",
+          "valueType": "1",
+          "name": "加和",
+          "operation": {
+            "calculateWay": "0",
+            "operation": "22"
+          },
+          "start": {
+            "cycleNum": "2",
+            "domain": "1",
+            "entityId": "1306052289342664706",
+            "locationId": "234",
+            "metric": "Texh",
+            "ruleType": "1",
+            "tag": "1",
+            "type": "1"
+          },
+          "end": {
+            "cycleNum": "2",
+            "domain": "1",
+            "entityId": "1306052289342664706",
+            "locationId": "234",
+            "metric": "abc",
+            "ruleType": "1",
+            "tag": "1",
+            "type": "1"
+          }
+        },
+        {
+          "value": "30",
+          "valueType": "0",
+          "start": {
+            "cycleNum": "2",
+            "domain": "1",
+            "entityId": "1306052289342664706",
+            "locationId": "234",
+            "metric": "加和",
+            "ruleType": "2",
+            "tag": "1",
+            "type": "1"
+          },
+          "name": "小于30",
+          "operation": {
+            "calculateWay": "1",
+            "operation": "11"
+          },
+          "end": {
+            "cycleNum": "2",
+            "domain": "1",
+            "entityId": "1306052289342664706",
+            "locationId": "234",
+            "metric": "Texh",
+            "ruleType": "2",
+            "tag": "1",
+            "type": "1"
+          }
+        }
+      ],
+      "timeExpBO": {
+        "alarmLevel": 5,
+        "blockTime": 10,
+        "cycleNum": 2,
+        "durationValue": 200,
+        "expType": 1,
+        "levelUpTime": 4,
+        "ruleType": 1,
+        "sendEndTime": "",
+        "sendFrequency": 5,
+        "sendStartTime": "",
+        "triggerType": 1,
+        "sendParam": "无"
+      }
+    }
+  ],
+  "ruleDesc": "rain测试新增1",
+  "ruleName": "rain新增规则1"
+}

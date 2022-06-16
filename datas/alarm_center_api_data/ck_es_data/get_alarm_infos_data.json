@@ -1,0 +1,47 @@
+{
+  "alarmEndTime": "2022-04-02 23:59:59",
+  "alarmIdList": "",
+  "alarmMainLevel": "",
+  "alarmStartTime": "2022-02-14 15:00:00",
+  "alarmStatusCombinationBoList": [
+    {
+      "hasRecovery": "",
+      "status": ""
+    }
+  ],
+  "alarmTagsBo": {
+    "likeAlarmTagsList": "",
+    "notLikeAlarmTagsList": "越限类告警,光伏业务线"
+  },
+  "curPage": 0,
+  "entityIdList": "",
+  "equipParentTypeList": "",
+  "equipSonTypeList": "",
+  "groupParamList": "alarm_main_level",
+  "hasRecovery": "",
+  "isShow": 1,
+  "likeAlarmTags": "",
+  "likeAlarmTagsList": "",
+  "likeAlarmTitleList": "",
+  "likeEquipName": "",
+  "multiIfAlarmTagsMap": {},
+  "multiIfAlarmTagsMapEnd": "",
+  "notLikeAlarmTagsList": "",
+  "orderParamMap": {},
+  "pageSize": 5,
+  "separateTags": 1,
+  "ruleEntIdList": "1367677007133487106",
+  "ruleType": "1",
+  "dataSource": "1",
+  "selectParamMap": {
+    "alarm_main_level": "alarmLevel",
+    "count(alarm_main_level)": "value"
+  },
+  "status": "",
+  "subTenantId": "1367677007133487106",
+  "subTenantIdArray": [
+    "1367677007133487106"
+  ],
+  "systemCodeList": "",
+  "tenantId": "fanNeng"
+}

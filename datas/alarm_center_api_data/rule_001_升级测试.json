@@ -1,0 +1,202 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:40",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1，Ic电压过限，大于5，目前电压为: ${Ic},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:40",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1，Ic电压过限，大于5，目前电压为: ${Ic},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_比较运算大于5",
+            "value": "5",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_CO1381D01",
+              "locationId": "PARK172_EMS01",
+              "metric": "Ic",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 1,
+          "durationValue": 120,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:40",
+          "sendFrequency": 120,
+          "sendParam": "",
+          "sendTemplate": "告警级别1升级：Ic电压过限，大于5超过60s，目前电压为: ${Ic},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:40",
+          "sendFrequency": 120,
+          "sendParam": "",
+          "sendTemplate": "告警级别1升级：Ic电压过限，大于5超过60s，目前电压为: ${Ic},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "levelUpTime": 60
+    },
+
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:40",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警级别2：Ic电压过限，目前电压为: ${Ic},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:40",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警级别2：Ic电压过限，目前电压为: ${Ic},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_比较运算大于15",
+            "value": "15",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_CO1381D01",
+              "locationId": "PARK172_EMS01",
+              "metric": "Ic",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 1,
+          "durationValue": 120,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 2,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "15225111055",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ic电压过限恢复，目前电压为: ${Ic},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ic电压过限恢复，目前电压为: ${Ic},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_比较运算大于等于",
+        "value": "2000",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_CO1381D01",
+          "locationId": "PARK172_EMS01",
+          "metric": "Ic",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "ruleDesc": "规则001描述_单测点阈值告警_绝对数据大于某值_17Ic",
+  "status": 0,
+  "ruleName": "规则001_单测点阈值告警_17Ic"
+}

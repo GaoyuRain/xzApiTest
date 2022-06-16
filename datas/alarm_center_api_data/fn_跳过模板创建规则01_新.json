@@ -1,0 +1,114 @@
+{
+  "alarmMouldInfo": {
+    "mouldName": "跳过模板创建规则测点阈值越限",
+    "entId": "1254591591796961281",
+    "entName": "欣盛达公司",
+    "mouldDesc": "跳过模板创建规则01测点阈值越限desc",
+    "equipParentType": "仪表类",
+    "equipSonType": "METE",
+    "isRecoverRule": 1,
+    "alarmMainLevel": "2",
+    "alarmSubLevel": "2",
+    "alarmTitle": "1230跳过模板创建规则01-标题",
+    "alarmDesc": "$-{所属公司名称}--$-{当前设备名称} 出现告警/告警恢复，告警/恢复时间：$-{消息发生时间}A相电压是$-{A相电压}",
+    "alarmDescMap": "[{\"name\":\"A相电压\",\"code\":\"Ua\",\"valueType\":\"double\",\"unit\":\"[kV]\",\"mainType\":\"测点23\"},{\"name\":\"所属公司名称\",\"code\":\"13\"},{\"name\":\"当前设备名称\",\"code\":\"14\"},{\"name\":\"消息发生时间\",\"code\":\"15\"}]",
+    "alarmTags": "[{\"dicName\":\"越限类告警\",\"id\":\"4\",\"name\":\"越限类告警\",\"type\":0},{\"dicName\":\"变位类告警\",\"id\":\"5\",\"name\":\"变位类告警\",\"type\":0},{\"dicName\":\"故障类告警\",\"id\":\"6\",\"name\":\"故障类告警\",\"type\":0},{\"dicName\":\"离线类告警\",\"id\":\"99\",\"name\":\"离线类告警\",\"type\":0}]",
+    "noRepeat": 1,
+    "modified": 0
+  },
+  "saveVO": {
+    "entId": "1254591591796961281",
+    "entName": "欣盛达公司",
+    "ruleEntId": "1254591591796961281",
+    "ruleEntName": "欣盛达公司",
+    "deviceInfoList": [
+      {
+        "id": 310408119232770048,
+        "name": "1230测试001",
+        "code": "PARK172_EMS01",
+        "productCode": "EMS",
+        "list": [
+          {
+            "id": 312592373379248128,
+            "productCode": "EMS",
+            "deviceId": "METE_CO1381D02",
+            "name": "11#主变",
+            "aliasCode": "PARK172_EMS01",
+            "stationId": "PARK172_EMS01"
+          }
+        ]
+      }
+    ]
+  },
+  "alarm": {
+    "timeRule": {
+      "cyclecategory": "1"
+    },
+    "rules": [
+      {
+        "ruleName": "小于300告警",
+        "enkvs": {
+          "start": {
+            "point": "Ua",
+            "nodeType": 1,
+            "type": "1",
+            "startOrEnd": true
+          },
+          "operation": {
+            "type": 1,
+            "symbol": "11"
+          },
+          "comparativetype": "2",
+          "absolute": 300
+        }
+      }
+    ]
+  },
+  "recover": {
+    "timeRule": {
+      "cyclecategory": "1"
+    },
+    "rules": [
+      {
+        "ruleName": "恢复规则大于等于300",
+        "enkvs": {
+          "start": {
+            "point": "Ua",
+            "nodeType": 1,
+            "type": "1",
+            "startOrEnd": true
+          },
+          "operation": {
+            "type": 1,
+            "symbol": "13"
+          },
+          "comparativetype": "2",
+          "absolute": 300
+        }
+      }
+    ]
+  },
+  "alarmMouldNotifiers": [
+    {
+      "entId": "1254591591796961281",
+      "userOpenid": "1402210974244356098"
+    }
+  ],
+  "alarmMouldNotifications": [
+    {
+      "notifyFlag": "0",
+      "triggerRuleCode": "300",
+      "startTime": "09:00",
+      "entTime": "20:00"
+    },
+    {
+      "notifyFlag": "1",
+      "triggerRuleCode": "300",
+      "startTime": "09:00",
+      "entTime": "20:00"
+    }
+  ],
+  "user": {
+    "openid": "1402210974244356098"
+  }
+}

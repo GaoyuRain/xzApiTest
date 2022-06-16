@@ -1,0 +1,143 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "烟感报警器故障01_事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "烟感报警器故障01告警：级别1，当前值不等于上一周期的值，变位器状态为: ${POSbkCls},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "烟感报警器故障01告警：级别1，当前值不等于上一周期的值，变位器状态为: ${POSbkCls},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "烟感报警器故障01_当期值不等于上一周期的值",
+            "value": "",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "15"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            },
+            "end": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "2"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "烟感报警器故障01告警恢复：当前值等于上一周期的值，变位器状态为: ${POSbkCls},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "烟感报警器故障01告警恢复：当前值等于上一周期的值，变位器状态为: ${POSbkCls},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "烟感报警器故障01告警恢复_当前值等于上一周期的值",
+        "value": "",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "12"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE390",
+          "locationId": "PARK1037_EMS01",
+          "metric": "POSbkCls",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        },
+        "end": {
+          "cycleNum": 1,
+          "domain": "EMS",
+          "entityId": "METE_METE390",
+          "locationId": "PARK1037_EMS01",
+          "metric": "POSbkCls",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "2"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则008描述_烟感报警器故障01_当前值不等于上一周期的值",
+  "ruleName": "规则008_烟感报警器故障01_rain"
+}

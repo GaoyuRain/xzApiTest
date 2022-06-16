@@ -1,0 +1,167 @@
+{
+  "alarmDes": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+  "alarmLevels": [
+    {
+      "expression": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "1254591591796961281",
+            "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+            "sendEndTime": "19:12",
+            "sendFrequency": 0,
+            "sendStartTime": "09:12",
+            "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+            "sendType": 1
+          },
+          {
+            "receiveTenant": "1254591591796961281",
+            "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+            "sendEndTime": "19:12",
+            "sendFrequency": 0,
+            "sendStartTime": "09:12",
+            "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+            "sendType": 2
+          },
+          {
+            "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+            "sendEndTime": "19:12",
+            "sendFrequency": 300,
+            "sendStartTime": "09:12",
+            "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+            "sendType": 6
+          }
+        ],
+        "cycleNum": 1,
+        "durationValue": 1,
+        "expContent": "(#C2.[0].value <= 240) && (#C2.[0].value > 100)",
+        "expType": 3,
+        "variables": [
+          {
+            "domain": "EMS",
+            "entityId": "METE_CO1381D03",
+            "locationId": "PARK172_EMS01",
+            "metric": "Ua",
+            "tag": "METE",
+            "varName": "C2"
+          }
+        ]
+      },
+      "level": 3
+    }
+  ],
+  "isDel": 0,
+  "noRepeat": 0,
+  "recover": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "1254591591796961281",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 0,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+        "sendType": 2
+      },
+      {
+        "receiveTenant": "1254591591796961281",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 0,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+        "sendType": 3
+      },
+      {
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 300,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime}A相电压是$-{Ua}",
+        "sendType": 6
+      }
+    ],
+    "cycleNum": 1,
+    "durationValue": 1,
+    "expContent": "#C2.[0].value > 240",
+    "expType": 3,
+    "variables": [
+      {
+        "domain": "EMS",
+        "entityId": "METE_CO1381D03",
+        "locationId": "PARK172_EMS01",
+        "metric": "Ua",
+        "tag": "METE",
+        "varName": "C2"
+      }
+    ]
+  },
+  "timeRecover": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "1254591591796961281",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 0,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 告警自动恢复，告警/恢复时间：$-{triggerTime}",
+        "sendType": 2
+      },
+      {
+        "receiveTenant": "1254591591796961281",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 0,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限001--欣盛达公司/2#主变 告警自动恢复，告警/恢复时间：$-{triggerTime}",
+        "sendType": 3
+      },
+      {
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendEndTime": "19:12",
+        "sendFrequency": 300,
+        "sendStartTime": "09:12",
+        "sendTemplate": "0121自动恢复简配A相越限--001欣盛达公司/2#主变 告警自动恢复，告警/恢复时间：$-{triggerTime}",
+        "sendType": 6
+      }
+    ],
+    "cycleNum": 1,
+    "durationValue": 1,
+    "expContent": "180",
+    "expType": 3,
+    "ruleType": 2,
+    "variables": [
+      {
+        "domain": "EMS",
+        "entityId": "METE_CO1381D03",
+        "locationId": "PARK172_EMS01",
+        "metric": "Ua",
+        "tag": "METE",
+        "varName": "C2"
+      }
+    ]
+  },
+  "ruleAlarmAttributes": {
+    "eventStatus": "0"
+  },
+  "ruleAttributes": {
+    "equipName": "欣盛达公司/2#主变",
+    "entName": "欣盛达公司",
+    "equipSonType": "METE",
+    "equipParentTypeName": "仪表类",
+    "deviceId": "312592373626712064",
+    "alarmTags": "[{\"dicName\":\"越限类告警\",\"id\":\"4\",\"name\":\"越限类告警\",\"type\":0},{\"dicName\":\"变位类告警\",\"id\":\"5\",\"name\":\"变位类告警\",\"type\":0},{\"dicName\":\"故障类告警\",\"id\":\"6\",\"name\":\"故障类告警\",\"type\":0}]",
+    "equipParentType": "仪表类",
+    "systemCode": "PARK172_EMS01",
+    "ruleEntId": "1254591591796961281",
+    "stationName": "欣盛达电子科技有限公司",
+    "alarmTitle": "0121自动恢复简配A相越限001",
+    "alarmMainLevel": "3",
+    "alarmSubLevel": "1"
+  },
+  "ruleDesc": "0121自动恢复简配A相越限001",
+  "ruleEntId": "1254591591796961281",
+  "ruleName": "0121自动恢复简配A相越限001 -欣盛达公司/2#主变",
+  "status": 0,
+  "subTenantId": "1254591591796961281",
+  "tenantId": "fanNeng"
+}

@@ -1,0 +1,91 @@
+[ {
+  "uid" : "4262ca7ad674dacc",
+  "name" : "test_upload_api[params6]",
+  "time" : {
+    "start" : 1626765464913,
+    "stop" : 1626765468668,
+    "duration" : 3755
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "a638b90fbf955799",
+  "name" : "test_upload_api[params7]",
+  "time" : {
+    "start" : 1626765468672,
+    "stop" : 1626765469406,
+    "duration" : 734
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "adb39f9232d00b6f",
+  "name" : "test_upload_api[params0]",
+  "time" : {
+    "start" : 1626765451262,
+    "stop" : 1626765453866,
+    "duration" : 2604
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "37f6f9453cb74ea1",
+  "name" : "test_upload_api[params4]",
+  "time" : {
+    "start" : 1626765461589,
+    "stop" : 1626765464149,
+    "duration" : 2560
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "86b50f14869fbff9",
+  "name" : "test_upload_api[params2]",
+  "time" : {
+    "start" : 1626765457855,
+    "stop" : 1626765460342,
+    "duration" : 2487
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a1b5e4224a2c36ac",
+  "name" : "test_upload_api[params3]",
+  "time" : {
+    "start" : 1626765460344,
+    "stop" : 1626765461586,
+    "duration" : 1242
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ee0a8dcb7567ca97",
+  "name" : "test_upload_api[params1]",
+  "time" : {
+    "start" : 1626765453868,
+    "stop" : 1626765457852,
+    "duration" : 3984
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "17982f43358c10cc",
+  "name" : "test_upload_api[params8]",
+  "time" : {
+    "start" : 1626765469408,
+    "stop" : 1626765472187,
+    "duration" : 2779
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "809582ad2cd134a6",
+  "name" : "test_upload_api[params5]",
+  "time" : {
+    "start" : 1626765464228,
+    "stop" : 1626765464907,
+    "duration" : 679
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

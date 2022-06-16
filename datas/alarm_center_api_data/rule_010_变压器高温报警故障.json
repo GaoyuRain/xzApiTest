@@ -1,0 +1,123 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "变压器高温报警故障_事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "010变压器高温报警故障告警：级别1，变位器状态为: ${ALMhighTemp},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "010变压器高温报警故障告警：级别1，变位器状态为: ${ALMhighTemp},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "变压器高温报警故障_当期值等于1",
+            "value": "1",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "12"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "RP_RP03",
+              "locationId": "PARK1093_EMS02",
+              "metric": "ALMhighTemp",
+              "ruleType": "0",
+              "tag": "RP",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "010变压器高温报警故障告警恢复：烟感报警器状态为: ${ALMhighTemp},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "010变压器高温报警故障告警恢复：烟感报警器状态为: ${ALMhighTemp},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "变压器高温报警故障告警恢复_当前值不等于1",
+        "value": "1",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "15"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "RP_RP03",
+          "locationId": "PARK1093_EMS02",
+          "metric": "ALMhighTemp",
+          "ruleType": "0",
+          "tag": "RP",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则010描述_变压器高温报警故障",
+  "ruleName": "规则010_变压器高温报警故障_rain"
+}

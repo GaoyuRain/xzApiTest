@@ -1,0 +1,93 @@
+{
+  "alarmMouldInfo": {
+    "mouldName": "跳过模板创建规则01测点阈值越限",
+    "entId": "1291347001673641985",
+    "entName": "线上官网入驻企业流程测试用能系统",
+    "mouldDesc": "跳过模板创建规则01测点阈值越限desc",
+    "equipParentType": "仪表类",
+    "equipSonType": "METE",
+    "isRecoverRule": 1,
+    "alarmMainLevel": "2",
+    "alarmSubLevel": "1",
+    "alarmTitle": "api告警迁移测试",
+    "alarmDesc": "$-{当前设备名称} 出现告警/告警恢复，告警/恢复时间：$-{消息发生时间}总有功功率是$-{总有功功率}",
+    "alarmDescMap": "[{\"name\":\"总有功功率\",\"code\":\"P\",\"valueType\":\"double\",\"unit\":\"[kW]\",\"mainType\":null},{\"name\":\"所属公司名称\",\"code\":\"13\"},{\"name\":\"当前设备名称\",\"code\":\"14\"},{\"name\":\"消息发生时间\",\"code\":\"15\"}]",
+    "alarmTags": "[{\"dicName\":\"越限类告警\",\"id\":\"4\",\"name\":\"越限类告警\",\"type\":0},{\"dicName\":\"变位类告警\",\"id\":\"5\",\"name\":\"变位类告警\",\"type\":0}]",
+    "noRepeat": 1
+  },
+  "saveVO": {
+    "entId": "1291347001673641985",
+    "entName": "线上官网入驻企业流程测试用能系统",
+    "ruleEntId": "1291347001673641985",
+    "ruleEntName": "线上官网入驻企业流程测试用能系统",
+    "deviceInfoList": [
+      {
+        "id": 1291347087059255296,
+        "name": "api告警迁移测试",
+        "code": "PARK710_EMS01",
+        "productCode": "EMS",
+        "list": [
+          {
+            "id": 1461138022191964160,
+            "productCode": "EMS",
+            "deviceId": "METE_METE01",
+            "name": "一食堂-14#0.4kV进线-映射",
+            "aliasCode": "PARK710_EMS01",
+            "stationId": "PARK710_EMS01"
+          }
+        ]
+      }
+    ]
+  },
+  "alarm": {
+    "timeRule": {
+      "cyclecategory": "1"
+    },
+    "rules": [
+      {
+        "ruleName": "小于10000",
+        "enkvs": {
+          "start": {
+            "point": "P",
+            "nodeType": 1,
+            "type": "1",
+            "startOrEnd": true
+          },
+          "operation": {
+            "type": 1,
+            "symbol": "11"
+          },
+          "comparativetype": "2",
+          "absolute": 10000
+        }
+      }
+    ]
+  },
+  "recover": {
+    "timeRule": {
+      "cyclecategory": "1"
+    },
+    "rules": [
+      {
+        "ruleName": "大于10000恢复规则",
+        "enkvs": {
+          "start": {
+            "point": "P",
+            "nodeType": 1,
+            "type": "1",
+            "startOrEnd": true
+          },
+          "operation": {
+            "type": 1,
+            "symbol": "13"
+          },
+          "comparativetype": "2",
+          "absolute": 10000
+        }
+      }
+    ]
+  },
+  "userInfo": {
+    "openid": "1468908265805365250"
+  }
+}

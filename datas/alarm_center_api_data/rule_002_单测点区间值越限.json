@@ -1,0 +1,195 @@
+{"alarmEventInfoBOS": [
+  {
+    "alarmStatus": "告警状态",
+    "eventName": "单测点区间值越限_事件名称",
+    "eventSendConfigBOs": [],
+    "refreshLevelUp": false,
+    "stopAlarmFlag": false
+  }
+],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "",
+            "sendTemplate": "告警1：Ua电压区间值(233-240)过限，目前电压为: ${Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "",
+            "sendTemplate": "告警1：Ua电压区间值(233-240)过限，目前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点区间告警_比较运算大于240",
+            "value": "240",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE11",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "0"
+            }
+          },
+          {
+            "name": "单测点区间告警_比较运算小于233",
+            "value": "233",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE11",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点区间告警_逻辑组合or",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "单测点区间告警_比较运算大于240",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "单测点区间告警_比较运算小于233",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+      ],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 10,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复，目前电压为: ${Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 10,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复，目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点区间告警_比较运算大于等于233",
+        "value": "233",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE11",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "单测点区间告警_比较运算小于等于240",
+        "value": "240",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE11",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "单测点区间告警_逻辑组合and",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "单测点区间告警_比较运算大于等于233",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "单测点区间告警_比较运算小于等于240",
+          "ruleType": "2",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则002描述_单测点区间值越限02",
+  "ruleName": "规则002_单测点区间值越限02_rain"
+}

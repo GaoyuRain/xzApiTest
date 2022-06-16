@@ -1,0 +1,52 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert 500 == 200\n +  where 500 = <Response [500]>.status_code",
+      "children" : [ {
+        "name" : "test_upload_api[params4]",
+        "uid" : "37f6f9453cb74ea1",
+        "parentUid" : "8c3a62190d26e79ad141cada7e69187b",
+        "status" : "failed",
+        "time" : {
+          "start" : 1626765461589,
+          "stop" : 1626765464149,
+          "duration" : 2560
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280, 250, 1360, 305], \"\\\\u6761\\\\u7801\\\\u53f7\": [1760, 250, 2016, 305], \"\\\\u59d3\\\\u540d\": [188, 310, 370, 360], \"\\\\u75c5\\\\u4eba\\\\u7c7b\\\\u522b\": [620, 310, 800, 360], \"\\\\u79d1\\\\u522b\": [930, 310, 1150, 360], \"\\\\u9001\\\\u68c0\\\\u533b\\\\u751f\": [1360, 310, 1550, 360], \"\\\\u6837\\\\u672c\\\\u7c7b\\\\u578b\": [1730, 310, 2016, 360], \"\\\\u6027\\\\u522b\": [188, 360, 300, 405], \"\\\\u75c5\\\\u4eba\\\\u7535\\\\u8bdd\": [620, 360, 800, 405], \"\\\\u5e8a\\\\u53f7\": [930, 360, 1150, 405], \"\\\\u533b\\\\u751f\\\\u7535\\\\u8bdd\": [1360, 360, 1550, 405], \"\\\\u6837\\\\u672c\\\\u72b6\\\\u6001\": [1730, 360, 2016, 405], \"\\\\u5e74\\\\u9f84\": [188, 405, 300, 455], \"\\\\u95e8\\\\u8bca/\\\\u4f4f\\\\u9662\\\\u53f7\": [670, 405, 1150, 455], \"\\\\u4e34\\\\u5e8a\\\\u8bca\\\\u65ad\": [1360, 405, 2016, 455]}, \"table_content\": {\"table_name\": \"\\\\u68c0\\\\u6d4b\\\\u62a5\\\\u544a\", \"table_location\": [70, 470, 2016, 2600], \"title_location\": [70, 470, 2016, 525], \"title_names\": [\"\\\\u9879\\\\u76ee\\\\u540d\\\\u79f0\", \"\\\\u9879\\\\u76ee\\\\u7b80\\\\u79f0\", \"\\\\u7ed3\\\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_coordinate为空'}" ]
+      }, {
+        "name" : "test_upload_api[params5]",
+        "uid" : "809582ad2cd134a6",
+        "parentUid" : "8c3a62190d26e79ad141cada7e69187b",
+        "status" : "failed",
+        "time" : {
+          "start" : 1626765464228,
+          "stop" : 1626765464907,
+          "duration" : 679
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_config为空'}" ]
+      }, {
+        "name" : "test_upload_api[params6]",
+        "uid" : "4262ca7ad674dacc",
+        "parentUid" : "8c3a62190d26e79ad141cada7e69187b",
+        "status" : "failed",
+        "time" : {
+          "start" : 1626765464913,
+          "stop" : 1626765468668,
+          "duration" : 3755
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '测试内容', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_config内容错误'}" ]
+      } ],
+      "uid" : "8c3a62190d26e79ad141cada7e69187b"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

@@ -1,0 +1,96 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "服务调用次数",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "mouldId": "1461274673277964288",
+            "sendFrequency": 120
+          },
+          {
+            "mouldId": "1462727337547272192",
+            "sendFrequency": 120
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "服务调用次数大于1次",
+            "value": "1.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "APM",
+              "entityId": "ai-platform-support",
+              "locationId": "1369923265280311297",
+              "metric": "service_cpm",
+              "ruleType": "0",
+              "tag": "service",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "mouldId": "1461274673277964288",
+        "sendFrequency": 60
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "服务调用次数小于等于1次",
+        "value": "1.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "APM",
+          "entityId": "ai-platform-support",
+          "locationId": "1369923265280311297",
+          "metric": "service_cpm",
+          "ruleType": "0",
+          "tag": "service",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "tenantId": "APM",
+  "status": 0,
+  "createFbwork": 1,
+  "ruleDesc": "APM告警转工单004_服务调用次数大于1次",
+  "ruleName": "APM告警转工单004_服务调用次数大于1次"
+}

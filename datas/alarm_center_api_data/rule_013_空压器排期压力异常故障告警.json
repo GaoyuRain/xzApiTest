@@ -1,0 +1,166 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "空压器排气压力异常故障_事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "空压器排气压力异常故障告警：级别1，上一周期正常，当前值异常，状态为: ${STbk},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "空压器排气压力异常故障告警：级别1，上一周期正常，当前值异常，状态为: ${STbk},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "空压器排气压力异常故障_当前值异常_等于0",
+            "value": "0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "12"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "BK_BK54",
+              "locationId": "PARK1037_EMS01",
+              "metric": "STbk",
+              "ruleType": "0",
+              "tag": "BK",
+              "type": "1"
+            }
+          },
+          {
+            "name": "空压器排气压力异常故障_上一周期值正常_等于1",
+            "value": "1",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "12"
+            },
+            "start": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "BK_BK54",
+              "locationId": "PARK1037_EMS01",
+              "metric": "STbk",
+              "ruleType": "0",
+              "tag": "BK",
+              "type": "2"
+            }
+          },
+          {
+            "name": "空压器排气压力异常故障_合并",
+            "value": "",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "domain": "EMS",
+              "metric": "空压器排气压力异常故障_当前值异常_等于0",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "domain": "EMS",
+              "metric": "空压器排气压力异常故障_上一周期值正常_等于1",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 2,
+          "expType": 4,
+          "durationValue": 1,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+      ],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "空压器排气压力异常故障告警恢复：两个周期内连续两次正常等于1，状态为: ${STbk},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "空压器排气压力异常故障告警恢复：两个周期内连续两次正常等于1，状态为: ${STbk},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "空压器排气压力异常告警恢复_两个周期内连续两次正常等于1",
+        "value": "1",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "12"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "BK_BK54",
+          "locationId": "PARK1037_EMS01",
+          "metric": "STbk",
+          "ruleType": "0",
+          "tag": "BK",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 2,
+      "expType": 3,
+      "durationValue": 2,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则013描述_空压器排气压力异常故障02",
+  "ruleName": "规则013_空压器排气压力异常故障02_rain"
+}

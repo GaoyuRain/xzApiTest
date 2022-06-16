@@ -1,0 +1,126 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "0",
+      "createUser": "rain",
+      "domain": "fanNeng",
+      "eventName": "test016告警动作05",
+      "eventSendConfigBOs": [
+        {
+          "receiveTenant": "fanNeng",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:30",
+          "sendFrequency": 480,
+          "sendTemplate": "test016告警动作，Ua电压过限，大于200，请尽快处理。(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "refreshLevelUp": false,
+      "status": 0,
+      "stopAlarmDuration": 300,
+      "stopAlarmFlag": true,
+      "stopAlarmStart": "2012-10-26 13:30:30"
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:30",
+            "sendFrequency": 240,
+            "sendParam": "",
+            "sendTemplate": "告警01：级别1，Ua电压过限，大于200，目前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_比较运算大于200",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE11",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则01：Ua电压过限恢复,目前电压为: ${Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则01：Ua电压过限恢复，目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_比较运算小于等于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE11",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "ruleDesc": "规则016描述_告警动作04",
+  "status": 0,
+  "ruleName": "规则016_告警动作04"
+}

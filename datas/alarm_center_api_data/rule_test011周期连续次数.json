@@ -1,0 +1,144 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1，test012规则，当前五周期累计3次触发小于200，当前电压为: ${Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "09:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "告警：级别1,test012规则，当前五周期累计3次触发小于200，当前电压为: ${Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点阈值告警_当前值小于200",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 5,
+          "durationValue": 3,
+          "expType": 4,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test012规则，级别1已升级，目前电压为: ${Ua},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "09:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 100,
+          "sendParam": "",
+          "sendTemplate": "告警：test012规则，级别1已升级，目前电压为: ${Ua},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "15225111055",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复,当前值大于200五周期内累计五次触发，目前电压为: ${Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "09:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：Ua电压过限恢复，当前值大于200五周期内累计五次触发， 目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点阈值告警恢复_当前值大于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "10"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 5,
+      "durationValue": 5,
+      "expType": 4,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "ruletest012_周期累计次数",
+  "ruleName": "ruletest012_周期累计次数"
+}

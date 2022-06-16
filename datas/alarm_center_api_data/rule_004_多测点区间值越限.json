@@ -1,0 +1,501 @@
+{"alarmEventInfoBOS": [
+  {
+    "alarmStatus": "告警状态",
+    "eventName": "多测点区间值越限_事件名称",
+    "eventSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "多测点区间值越限告警事件：Ua电压过限，目前电压为: ${Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 120,
+        "sendParam": "",
+        "sendTemplate": "多测点区间值越限告警事件：Ua电压过限，目前电压为: ${Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "refreshLevelUp": false,
+    "stopAlarmFlag": false
+  }
+],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 30,
+            "sendParam": "",
+            "sendTemplate": "告警：某测点区间值电压过限，目前电压为，Ua电压为：${Ua}，Ub电压为：${Ub}，Uc电压为：${Uc}，(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 30,
+            "sendParam": "",
+            "sendTemplate": "告警：某测点区间值电压过限，目前电压为，Ua电压为：${Ua}，Ub电压为：${Ub}，Uc电压为：${Uc}，(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "多测点区间值越限告警_A点大于",
+            "value": "400",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "1",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_A点小于",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ua",
+              "ruleType": "1",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_B点大于",
+            "value": "400",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ub",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_B点小于",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Ub",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_C点大于",
+            "value": "400",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Uc",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_C点小于",
+            "value": "200",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_METE109",
+              "locationId": "PARK1037_EMS01",
+              "metric": "Uc",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_A点越限",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "多测点区间值越限告警_A点大于",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "多测点区间值越限告警_A点小于",
+              "ruleType": "2",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_B点越限",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "多测点区间值越限告警_B点大于",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "多测点区间值越限告警_B点小于",
+              "ruleType": "2",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_C点越限",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "多测点区间值越限告警_C点大于",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "多测点区间值越限告警_C点小于",
+              "ruleType": "2",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_A或B点越限",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "多测点区间值越限告警_A点越限",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "多测点区间值越限告警_B点越限",
+              "ruleType": "2",
+              "type": "1"
+            }
+          },
+          {
+            "name": "多测点区间值越限告警_A或B或C点越限",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "20"
+            },
+            "start": {
+              "metric": "多测点区间值越限告警_A或B点越限",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "多测点区间值越限告警_C点越限",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 20,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：某测点区间值电压过限恢复，目前电压为，Ua电压为：${Ua}，Ub电压为：${Ub}，Uc电压为：${Uc}，(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 20,
+        "sendParam": "",
+        "sendTemplate": "恢复规则：某测点区间值电压过限恢复，目前电压为，Ua电压为：${Ua}，Ub电压为：${Ub}，Uc电压为：${Uc}，(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "多测点区间告警_A正常大于等于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_A正常小于等于400",
+        "value": "400",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_B正常大于等于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ub",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_B正常小于等于400",
+        "value": "400",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Ub",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_C正常大于等于200",
+        "value": "200",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Uc",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_C正常小于等于400",
+        "value": "400",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_METE109",
+          "locationId": "PARK1037_EMS01",
+          "metric": "Uc",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_A点正常",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "多测点区间告警_A正常大于等于200",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "多测点区间告警_A正常小于等于400",
+          "ruleType": "2",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_B点正常",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "多测点区间告警_B正常大于等于200",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "多测点区间告警_B正常小于等于400",
+          "ruleType": "2",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_C点正常",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "多测点区间告警_C正常大于等于200",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "多测点区间告警_C正常小于等于400",
+          "ruleType": "2",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_AB点正常",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "多测点区间告警_A点正常",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "多测点区间告警_B点正常",
+          "ruleType": "2",
+          "type": "1"
+        }
+      },
+      {
+        "name": "多测点区间告警_ABC点正常",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "多测点区间告警_AB点正常",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "多测点区间告警_C点正常",
+          "ruleType": "2",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则004描述_多测点区间值越限02",
+  "ruleName": "规则004_多测点区间值越限02_rain"
+}

@@ -1,0 +1,222 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "变位类03_事件名称",
+      "eventSendConfigBOs": [
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "17612136829",
+          "sendStartTime": "10:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 60,
+          "sendParam": "",
+          "sendTemplate": "变位03告警事件：0变1，变位器状态为: ${POSbkCls},(短信推送)",
+          "sendType": 6
+        },
+        {
+          "receiveTenant": "租户rain",
+          "receiveUser": "gaoyui@enn.cn",
+          "sendStartTime": "10:10",
+          "sendEndTime": "18:18",
+          "sendFrequency": 60,
+          "sendParam": "",
+          "sendTemplate": "变位03告警事件：0变1，变位器状态为: ${POSbkCls},(邮箱推送)",
+          "sendType": 4
+        }
+      ],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "17612136829",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "变位03告警：0变1，变位器状态为: ${POSbkCls},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "租户rain",
+            "receiveUser": "gaoyui@enn.cn",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 60,
+            "sendParam": "",
+            "sendTemplate": "变位03告警：0变1，变位器状态为: ${POSbkCls},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "变位类03告警_上一周期不等于1",
+            "value": "1",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "15"
+            },
+            "start": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "2"
+            }
+          },
+          {
+            "name": "变位类03告警_当前值为1",
+            "value": "1",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "12"
+            },
+            "start": {
+              "cycleNum": 1,
+              "domain": "EMS",
+              "entityId": "METE_METE390",
+              "locationId": "PARK1037_EMS01",
+              "metric": "POSbkCls",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          },
+          {
+            "name": "变位类03告警_并起来",
+            "value": "",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "metric": "变位类03告警_上一周期不等于1",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "变位类03告警_当前值为1",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "17612136829",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "变位03告警恢复：上一周期和当前值都不等于1，变位器状态为: ${POSbkCls},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "租户rain",
+        "receiveUser": "gaoyui@enn.cn",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 60,
+        "sendParam": "",
+        "sendTemplate": "变位03告警恢复：上一周期和当前值都不等于1，变位器状态为: ${POSbkCls},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "变位类03告警恢复_上一周期不等于1",
+        "value": "1",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "15"
+        },
+        "start": {
+          "cycleNum": 1,
+          "domain": "EMS",
+          "entityId": "METE_METE390",
+          "locationId": "PARK1037_EMS01",
+          "metric": "POSbkCls",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "2"
+        }
+      },
+      {
+        "name": "变位类03告警恢复_当前值也不等于1",
+        "value": "1",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "15"
+        },
+        "start": {
+          "cycleNum": 1,
+          "domain": "EMS",
+          "entityId": "METE_METE390",
+          "locationId": "PARK1037_EMS01",
+          "metric": "POSbkCls",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      },
+      {
+        "name": "变位类03告警恢复_上一周期和当前值都不等于1",
+        "value": "",
+        "valueType": "1",
+        "operation": {
+          "calculateWay": "2",
+          "operation": "19"
+        },
+        "start": {
+          "metric": "变位类03告警恢复_上一周期不等于1",
+          "ruleType": "2",
+          "type": "1"
+        },
+        "end": {
+          "metric": "变位类03告警恢复_当前值也不等于1",
+          "ruleType": "2",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "domain": "fanNeng",
+  "status": 0,
+  "ruleDesc": "规则007描述_变位类03_0变1",
+  "ruleName": "规则007_变位类03_rain"
+}

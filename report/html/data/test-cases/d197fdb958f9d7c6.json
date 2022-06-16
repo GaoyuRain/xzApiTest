@@ -1,0 +1,65 @@
+{
+  "uid" : "d197fdb958f9d7c6",
+  "name" : "test_upload_api[params6]",
+  "fullName" : "script.test_template.TestTemplate#test_upload_api",
+  "historyId" : "9f68a87b044093a08b2cd7629cb3cbb5",
+  "time" : {
+    "start" : 1626688897596,
+    "stop" : 1626688897596,
+    "duration" : 0
+  },
+  "status" : "broken",
+  "statusMessage" : "FileNotFoundError: [Errno 2] No such file or directory: '../image/template1.png'",
+  "statusTrace" : "self = <script.test_template.TestTemplate object at 0x0000019DDCB2CEE0>\nparams = {'formwork_name': 'test报告识别模板1', 'specific_type': '', 'template_config': '测试内容', 'template_coordinate': '{\"\\\\u9001\\\\u6...730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', ...}\n\n    @pytest.mark.parametrize('params', ParamsUtils.get_template_upload_api())\n    @allure.story('测试模板上传api接口')\n    def test_upload_api(self, params: dict):\n        values = params.get('values')\n        allure.step(values)\n        params.pop('values')\n>       r = TemplateRecognizeApi.upload_pic_api1(params)\n\nscript\\test_template.py:22: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncls = <class 'api.template_recognize_api.TemplateRecognizeApi'>\nparams = {'formwork_name': 'test报告识别模板1', 'specific_type': '', 'template_config': '测试内容', 'template_coordinate': '{\"\\\\u9001\\\\u6...730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', ...}\n\n    @classmethod\n    def upload_pic_api1(cls, params) -> Response:\n        # custom-d5581a4f45074128ad8fb7213db42317\n    \n        url = 'http://open-platform-gateway.dev.ennewi.cn' + \"/cv/ocr\" + '/template_upload'\n        header = {\n            'X-GW-Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6Ik82MWZWTVdpIiwiZXhwIjoxNjI2NzQ3MzMwfQ.Zv5JHxE7r_Pagd0Vmt8EBGVu2lAkJLHrtsJELZLSVx0'}\n    \n>       with open('../image/template1.png', 'rb') as f:\nE       FileNotFoundError: [Errno 2] No such file or directory: '../image/template1.png'\n\napi\\template_recognize_api.py:24: FileNotFoundError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "测试模板上传api接口"
+  }, {
+    "name" : "feature",
+    "value" : "测试自定义模板ocr识别api"
+  }, {
+    "name" : "parentSuite",
+    "value" : "script"
+  }, {
+    "name" : "suite",
+    "value" : "test_template"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestTemplate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-2M337UE"
+  }, {
+    "name" : "thread",
+    "value" : "9256-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "script.test_template"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "params",
+    "value" : "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '测试内容', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_config内容错误'}"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d197fdb958f9d7c6.json",
+  "parameterValues" : [ "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '{\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [100, 280], \"\\\\u5730\\\\u5740\": [100, 2856], \"\\\\u7b2c1\\\\u9875/\\\\u51711\\\\u9875\": [1811, 2718], \"\\\\u6761\\\\u7801\\\\u53f7\": [1608, 280]}', 'template_config': '测试内容', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_config内容错误'}" ]
+}

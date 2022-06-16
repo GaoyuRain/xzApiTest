@@ -1,0 +1,79 @@
+alarm:
+  rules:
+  - enkvs:
+      absolute: 10000
+      comparativetype: '2'
+      operation:
+        symbol: '11'
+        type: 1
+      start:
+        nodeType: 1
+        point: P
+        startOrEnd: true
+        type: '1'
+    ruleName: 小于10000
+  timeRule:
+    cyclecategory: '1'
+alarmMouldInfo:
+  alarmDesc: $-{当前设备名称} 出现告警/告警恢复，告警/恢复时间：$-{消息发生时间}总有功功率是$-{总有功功率}
+  alarmDescMap: '[{"name":"总有功功率","code":"P","valueType":"double","unit":"[kW]","mainType":null},{"name":"所属公司名称","code":"13"},{"name":"当前设备名称","code":"14"},{"name":"消息发生时间","code":"15"}]'
+  alarmMainLevel: '2'
+  alarmSubLevel: '1'
+  alarmTags: '[{"dicName":"越限类告警","id":"4","name":"越限类告警","type":0},{"dicName":"变位类告警","id":"5","name":"变位类告警","type":0}]'
+  alarmTitle: api告警迁移测试
+  entId: '1291347001673641985'
+  entName: 线上官网入驻企业流程测试用能系统
+  equipParentType: 仪表类
+  equipSonType: METE
+  isRecoverRule: 1
+  modified: 1
+  mouldDesc: 跳过模板创建规则00001测点阈值越限desc
+  mouldName: 跳过模板创建规则01测点阈值越限
+  noRepeat: 1
+alarmMouldNotifications:
+- entTime: '21:30'
+  notifyFlag: '0'
+  startTime: '18:00'
+  triggerRuleCode: '200'
+- entTime: '21:30'
+  notifyFlag: '1'
+  startTime: '18:00'
+  triggerRuleCode: '200'
+alarmMouldNotifiers:
+- entId: '1291347001673641985'
+  userGroupId: '14667'
+recover:
+  rules:
+  - enkvs:
+      absolute: 10000
+      comparativetype: '2'
+      operation:
+        symbol: '13'
+        type: 1
+      start:
+        nodeType: 1
+        point: P
+        startOrEnd: true
+        type: '1'
+    ruleName: 大于10000恢复规则
+  timeRule:
+    cyclecategory: '1'
+saveVO:
+  deviceInfoList:
+  - code: PARK710_EMS01
+    id: 1291347087059255296
+    list:
+    - aliasCode: PARK710_EMS01
+      deviceId: METE_METE01
+      id: 1461138022191964160
+      name: 一食堂-14#0.4kV进线-映射
+      productCode: EMS
+      stationId: PARK710_EMS01
+    name: api告警迁移测试
+    productCode: EMS
+  entId: '1291347001673641985'
+  entName: 线上官网入驻企业流程测试用能系统1
+  ruleEntId: '1291347001673641985'
+  ruleEntName: 线上官网入驻企业流程测试用能系统1
+user:
+  openid: '1468908265805365250'

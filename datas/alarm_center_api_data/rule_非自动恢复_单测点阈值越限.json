@@ -1,0 +1,141 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "单测点区间值越限_事件名称",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "receiveTenant": "",
+            "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "",
+            "sendTemplate": "欣盛达电子科技有限公司--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime},Ua电压过限，目前电压为: $-{Ua},(短信推送)",
+            "sendType": 6
+          },
+          {
+            "receiveTenant": "1254591591796961281",
+            "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+            "sendStartTime": "10:10",
+            "sendEndTime": "18:18",
+            "sendFrequency": 120,
+            "sendParam": "",
+            "sendTemplate": "欣盛达电子科技有限公司--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime},Ua电压过限，目前电压为: $-{Ua},(邮箱推送)",
+            "sendType": 4
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "单测点告警_比较运算大于240",
+            "value": "240",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "10"
+            },
+            "start": {
+              "domain": "EMS",
+              "entityId": "METE_CO1381D03",
+              "locationId": "PARK172_EMS01",
+              "metric": "Ua",
+              "ruleType": "0",
+              "tag": "METE",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [
+      ],
+      "levelUpTime": 0
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "receiveTenant": "",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 10,
+        "sendParam": "",
+        "sendTemplate": "欣盛达电子科技有限公司--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime},Ua电压过限恢复，目前电压为: $-{Ua},(短信推送)",
+        "sendType": 6
+      },
+      {
+        "receiveTenant": "1254591591796961281",
+        "receiveUser": "[{\"entId\":\"1254591591796961281\",\"groupIds\":[\"11245\"],\"roleIds\":[]}]",
+        "sendStartTime": "10:10",
+        "sendEndTime": "18:18",
+        "sendFrequency": 10,
+        "sendParam": "",
+        "sendTemplate": "欣盛达电子科技有限公司--欣盛达公司/2#主变 出现告警/告警恢复，告警/恢复时间：$-{triggerTime},Ua电压过限恢复，目前电压为: $-{Ua},(邮箱推送)",
+        "sendType": 4
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "单测点区间告警_比较运算小于等于240",
+        "value": "240",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "14"
+        },
+        "start": {
+          "domain": "EMS",
+          "entityId": "METE_CO1381D03",
+          "locationId": "PARK172_EMS01",
+          "metric": "Ua",
+          "ruleType": "0",
+          "tag": "METE",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "ruleAttributes": {
+    "equipName": "欣盛达公司/2#主变",
+    "entName": "欣盛达公司",
+    "equipSonType": "METE",
+    "equipParentTypeName": "仪表类",
+    "deviceId": "312592373626712064",
+    "alarmTags": "[{\"dicName\":\"越限类告警\",\"id\":\"4\",\"name\":\"越限类告警\",\"type\":0},{\"dicName\":\"变位类告警\",\"id\":\"5\",\"name\":\"变位类告警\",\"type\":0},{\"dicName\":\"故障类告警\",\"id\":\"6\",\"name\":\"故障类告警\",\"type\":0}]",
+    "equipParentType": "仪表类",
+    "systemCode": "PARK172_EMS01",
+    "ruleEntId": "1254591591796961281",
+    "stationName": "欣盛达电子科技有限公司",
+    "alarmTitle": "0117非自动恢复单测点阈值越限",
+    "alarmMainLevel": "3",
+    "alarmSubLevel": "1"
+  },
+  "noRepeat": 0,
+  "tenantId": "fanNeng",
+  "subTenantId": "1254591591796961281",
+  "simpleRule": false,
+  "status": 0,
+  "ruleDesc": "规则描述_单测点越限",
+  "ruleName": "规则001_单测点越限"
+}

@@ -1,0 +1,177 @@
+{
+  "alarmEventInfoBOS": [
+    {
+      "alarmStatus": "告警状态",
+      "eventName": "服务调用次数",
+      "eventSendConfigBOs": [],
+      "refreshLevelUp": false,
+      "stopAlarmFlag": false
+    }
+  ],
+  "alarmLevelBOs": [
+    {
+      "expressionBO": {
+        "alarmSendConfigBOs": [
+          {
+            "mouldId": "1457528699464323072",
+            "sendFrequency": 30
+          },
+          {
+            "mouldId": "1457534085026156544",
+            "sendFrequency": 30
+          }
+        ],
+        "calculationExpBOS": [
+          {
+            "name": "服务调用次数小于7000次",
+            "value": "7000.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "11"
+            },
+            "start": {
+              "domain": "APM",
+              "entityId": "*",
+              "locationId": "1369923265280311297",
+              "metric": "service_cpm",
+              "ruleType": "0",
+              "tag": "service",
+              "type": "1"
+            }
+          },
+          {
+            "name": "服务调用次数大于等于6000次",
+            "value": "6000.0",
+            "valueType": "2",
+            "operation": {
+              "calculateWay": "1",
+              "operation": "13"
+            },
+            "start": {
+              "domain": "APM",
+              "entityId": "*",
+              "locationId": "1369923265280311297",
+              "metric": "service_cpm",
+              "ruleType": "0",
+              "tag": "service",
+              "type": "1"
+            }
+          },
+          {
+            "name": "单测点区间告警_逻辑组合and",
+            "valueType": "1",
+            "operation": {
+              "calculateWay": "2",
+              "operation": "19"
+            },
+            "start": {
+              "metric": "服务调用次数小于7000次",
+              "ruleType": "2",
+              "type": "1"
+            },
+            "end": {
+              "metric": "服务调用次数大于等于6000次",
+              "ruleType": "2",
+              "type": "1"
+            }
+          }
+        ],
+        "timeExpBO": {
+          "cycleNum": 1,
+          "expType": 0,
+          "ruleType": 0,
+          "triggerType": 0
+        }
+      },
+      "level": 1,
+      "levelUpSendConfigBOs": [],
+      "levelUpTime": 0,
+      "levelDesc": "P2"
+    }
+  ],
+  "recoverBO": {
+    "alarmSendConfigBOs": [
+      {
+        "mouldId": "1457528699464323072",
+        "sendFrequency": 30
+      },
+      {
+        "mouldId": "1457534085026156544",
+        "sendFrequency": 30
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "服务调用次数大于等于7000次",
+        "value": "7000.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "APM",
+          "entityId": "*",
+          "locationId": "1369923265280311297",
+          "metric": "service_cpm",
+          "ruleType": "0",
+          "tag": "service",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "cycleNum": 1,
+      "expType": 0,
+      "ruleType": 1,
+      "triggerType": 0
+    }
+  },
+  "timeRecover": {
+    "expContent": "240",
+    "ruleType": 2,
+    "alarmSendConfigBOs": [
+      {
+        "mouldId": "1457528699464323072",
+        "sendFrequency": 30
+      },
+      {
+        "mouldId": "1457534085026156544",
+        "sendFrequency": 30
+      }
+    ],
+    "calculationExpBOS": [
+      {
+        "name": "服务调用次数大于等于7000次",
+        "value": "7000.0",
+        "valueType": "2",
+        "operation": {
+          "calculateWay": "1",
+          "operation": "13"
+        },
+        "start": {
+          "domain": "APM",
+          "entityId": "*",
+          "locationId": "1369923265280311297",
+          "metric": "service_cpm",
+          "ruleType": "0",
+          "tag": "service",
+          "type": "1"
+        }
+      }
+    ],
+    "timeExpBO": {
+      "ruleType": 2,
+      "cycleNum": 1,
+      "expType": 0,
+      "triggerType": 0
+    }
+  },
+  "noRepeat": 0,
+  "tenantId": "APM",
+  "status": 0,
+  "createFbwork": 1,
+  "ruleDesc": "APM自动恢复告警通配规则001",
+  "ruleName": "APM自动恢复告警通配规则001"
+}

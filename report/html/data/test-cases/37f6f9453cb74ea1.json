@@ -1,0 +1,98 @@
+{
+  "uid" : "37f6f9453cb74ea1",
+  "name" : "test_upload_api[params4]",
+  "fullName" : "script.test_template.TestTemplate#test_upload_api",
+  "historyId" : "31561620f62288359e56beb0514a8b8c",
+  "time" : {
+    "start" : 1626765461589,
+    "stop" : 1626765464149,
+    "duration" : 2560
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 500 == 200\n +  where 500 = <Response [500]>.status_code",
+  "statusTrace" : "self = <script.test_template.TestTemplate object at 0x0000027AC76B3DC0>\nparams = {'formwork_name': 'test报告识别模板1', 'specific_type': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4...\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_coordinate': '', ...}\n\n    @pytest.mark.parametrize('params', ParamsUtils.get_template_upload_api())\n    @allure.story('测试模板上传api接口')\n    def test_upload_api(self, params: dict):\n        values = params.get('values')\n        allure.description(values)\n        allure.step('values')\n        params.pop('values')\n        r = TemplateRecognizeApi.upload_pic_api1(params)\n>       assert r.status_code == 200\nE       assert 500 == 200\nE        +  where 500 = <Response [500]>.status_code\n\nscript\\test_template.py:24: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "测试自定义模板ocr识别api"
+  }, {
+    "name" : "story",
+    "value" : "测试模板上传api接口"
+  }, {
+    "name" : "parentSuite",
+    "value" : "script"
+  }, {
+    "name" : "suite",
+    "value" : "test_template"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestTemplate"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-2M337UE"
+  }, {
+    "name" : "thread",
+    "value" : "12984-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "script.test_template"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "params",
+    "value" : "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280, 250, 1360, 305], \"\\\\u6761\\\\u7801\\\\u53f7\": [1760, 250, 2016, 305], \"\\\\u59d3\\\\u540d\": [188, 310, 370, 360], \"\\\\u75c5\\\\u4eba\\\\u7c7b\\\\u522b\": [620, 310, 800, 360], \"\\\\u79d1\\\\u522b\": [930, 310, 1150, 360], \"\\\\u9001\\\\u68c0\\\\u533b\\\\u751f\": [1360, 310, 1550, 360], \"\\\\u6837\\\\u672c\\\\u7c7b\\\\u578b\": [1730, 310, 2016, 360], \"\\\\u6027\\\\u522b\": [188, 360, 300, 405], \"\\\\u75c5\\\\u4eba\\\\u7535\\\\u8bdd\": [620, 360, 800, 405], \"\\\\u5e8a\\\\u53f7\": [930, 360, 1150, 405], \"\\\\u533b\\\\u751f\\\\u7535\\\\u8bdd\": [1360, 360, 1550, 405], \"\\\\u6837\\\\u672c\\\\u72b6\\\\u6001\": [1730, 360, 2016, 405], \"\\\\u5e74\\\\u9f84\": [188, 405, 300, 455], \"\\\\u95e8\\\\u8bca/\\\\u4f4f\\\\u9662\\\\u53f7\": [670, 405, 1150, 455], \"\\\\u4e34\\\\u5e8a\\\\u8bca\\\\u65ad\": [1360, 405, 2016, 455]}, \"table_content\": {\"table_name\": \"\\\\u68c0\\\\u6d4b\\\\u62a5\\\\u544a\", \"table_location\": [70, 470, 2016, 2600], \"title_location\": [70, 470, 2016, 525], \"title_names\": [\"\\\\u9879\\\\u76ee\\\\u540d\\\\u79f0\", \"\\\\u9879\\\\u76ee\\\\u7b80\\\\u79f0\", \"\\\\u7ed3\\\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_coordinate为空'}"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "5b20ded5977e3c74",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert 500 == 200\n +  where 500 = <Response [500]>.status_code",
+      "time" : {
+        "start" : 1626689692147,
+        "stop" : 1626689694295,
+        "duration" : 2148
+      }
+    }, {
+      "uid" : "f37c5a14191cb066",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert 500 == 200\n +  where 500 = <Response [500]>.status_code",
+      "time" : {
+        "start" : 1626688967045,
+        "stop" : 1626688968107,
+        "duration" : 1062
+      }
+    }, {
+      "uid" : "2dc7ba67b2e359a0",
+      "status" : "broken",
+      "statusDetails" : "FileNotFoundError: [Errno 2] No such file or directory: '../image/template1.png'",
+      "time" : {
+        "start" : 1626688897586,
+        "stop" : 1626688897586,
+        "duration" : 0
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "37f6f9453cb74ea1.json",
+  "parameterValues" : [ "{'formwork_name': 'test报告识别模板1', 'type': 'location', 'template_coordinate': '', 'template_config': '{\"text_content\": {\"\\\\u9001\\\\u68c0\\\\u5355\\\\u4f4d\": [280, 250, 1360, 305], \"\\\\u6761\\\\u7801\\\\u53f7\": [1760, 250, 2016, 305], \"\\\\u59d3\\\\u540d\": [188, 310, 370, 360], \"\\\\u75c5\\\\u4eba\\\\u7c7b\\\\u522b\": [620, 310, 800, 360], \"\\\\u79d1\\\\u522b\": [930, 310, 1150, 360], \"\\\\u9001\\\\u68c0\\\\u533b\\\\u751f\": [1360, 310, 1550, 360], \"\\\\u6837\\\\u672c\\\\u7c7b\\\\u578b\": [1730, 310, 2016, 360], \"\\\\u6027\\\\u522b\": [188, 360, 300, 405], \"\\\\u75c5\\\\u4eba\\\\u7535\\\\u8bdd\": [620, 360, 800, 405], \"\\\\u5e8a\\\\u53f7\": [930, 360, 1150, 405], \"\\\\u533b\\\\u751f\\\\u7535\\\\u8bdd\": [1360, 360, 1550, 405], \"\\\\u6837\\\\u672c\\\\u72b6\\\\u6001\": [1730, 360, 2016, 405], \"\\\\u5e74\\\\u9f84\": [188, 405, 300, 455], \"\\\\u95e8\\\\u8bca/\\\\u4f4f\\\\u9662\\\\u53f7\": [670, 405, 1150, 455], \"\\\\u4e34\\\\u5e8a\\\\u8bca\\\\u65ad\": [1360, 405, 2016, 455]}, \"table_content\": {\"table_name\": \"\\\\u68c0\\\\u6d4b\\\\u62a5\\\\u544a\", \"table_location\": [70, 470, 2016, 2600], \"title_location\": [70, 470, 2016, 525], \"title_names\": [\"\\\\u9879\\\\u76ee\\\\u540d\\\\u79f0\", \"\\\\u9879\\\\u76ee\\\\u7b80\\\\u79f0\", \"\\\\u7ed3\\\\u679c\", \"\\\\u5355\\\\u4f4d\", \"\\\\u53c2\\\\u8003\\\\u533a\\\\u95f4\", \"\\\\u65b9\\\\u6cd5\\\\u5b66\"]}}', 'template_method': 'custom', 'specific_type': '', 'values': '测试template_coordinate为空'}" ]
+}
