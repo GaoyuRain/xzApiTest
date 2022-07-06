@@ -85,7 +85,7 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.get_config('fn', 991438417983631360, 8000, 'prod'))
+    send_kfmsg(AlarmConfig.get_config('fn', 991438417983631360, 8000, 'prod'))
     send_kfmsg(AlarmConfig.get_config('fn', 990976771213672448, 300, 'test'))
 
     # for i in range(3):
