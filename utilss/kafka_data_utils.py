@@ -22,7 +22,9 @@ class KProducer:
         """
         self.producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
-            value_serializer=lambda m: json.dumps(m).encode('ascii'))  # json 格式化发送的内容
+            value_serializer=lambda m: json.dumps(m).encode('ascii')
+            # ,api_version=(0,10,2)
+        )  # json 格式化发送的内容
         self.topic = topic
 
     def sync_producer(self, data_li: list):
@@ -31,12 +33,14 @@ class KProducer:
         :param data_li:  发送数据
         :return:
         """
+        global partition
         for data in data_li:
             future = self.producer.send(self.topic, data)
             record_metadata = future.get(timeout=30)  # 同步确认消费
             partition = record_metadata.partition  # 数据所在的分区
             offset = record_metadata.offset  # 数据所在分区的位置
             print('save success, partition: {}, offset: {}'.format(partition, offset))
+        return partition
 
     def asyn1_producer(self, data_li: list):
         """

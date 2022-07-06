@@ -1,0 +1,30 @@
+[
+  {
+        "domain": "IOTM",
+        "time": 1657009380685,
+        "tags": {
+            "node": "10.39.30.98",
+            "cluster": "emq-v3-cluster",
+            "clientId": "ZD03GD3010044580"
+        },
+        "metrics": {
+            "emq.c.mailboxLen": 0,
+            "emq.c.protoVer": 4,
+            "emq.c.sendOct": 289570,
+            "emq.c.cleanStart": 1,
+            "emq.c.recvCnt": 17785,
+            "emq.c.sendMsg": 0,
+            "emq.c.reductions": 12000543,
+            "emq.c.sendPkt": 8968,
+            "emq.c.status": 1,
+            "emq.c.recvPkt": 8968,
+            "emq.c.sendPend": 0,
+            "emq.c.connectedAt": 1656740628000,
+            "emq.c.sendCnt": 8970,
+            "emq.c.recvOct": 13170380,
+            "emq.c.heapSize": 1598,
+            "emq.c.recvMsg": 4483
+        },
+        "v": "1"
+    }
+]
