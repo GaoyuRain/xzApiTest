@@ -83,34 +83,45 @@ class MessageUtils:
         return cls.fn_message01
 
     @classmethod
-    def get_fn_message(cls, ruleid, value):
-        # 老平台数据库
-        conn = pymysql.connect(host='10.39.30.21', user='fn_db_test', password='fn_db_test20180411',
-                               db='alarm-plateform', charset='utf8'
-                               # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
-                               )
-        cur = conn.cursor()
-        sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
-        cur.execute(sql)
-        info = list(cur.fetchone())
-        new_ruleid = info[4]
-        print(f'new_ruid: {new_ruleid}')
+    def get_fn_message(cls, ruleid, value, env=None):
+        fn_message01 = {"staId": "PARK172_EMS01", "data": [], "domain": "EMS", "allPoints": 1, "version": "0.0.1"}
+        data_info = []
+        if "prod".__eq__(env) is True:
+            try:
+                # 老平台数据库 prod
+                conn = pymysql.connect(host='10.39.45.74', port=3306, user='alarm_plateform_slave',
+                                       password='4kFG3lMxR7Nu',
+                                       db='alarm_plateform', charset='utf8', use_unicode=True)
+                cur = conn.cursor()
+                sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
+                cur.execute(sql)
+                data_info = list(cur.fetchone())
+            except Exception as result:
+                print("错误: %s" % result)
+            finally:
+                cur.close()
+                conn.close()
+        else:
+            # 老平台数据库 test
+            conn = pymysql.connect(host='10.39.30.21', user='fn_db_test', password='fn_db_test20180411',
+                                   db='alarm-plateform', charset='utf8'
+                                   # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
+                                   )
+            cur = conn.cursor()
+            sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
+            cur.execute(sql)
+            data_info = list(cur.fetchone())
+            cur.close()
+            conn.close()
 
-        metric = info[2] + '_' + str(json.loads(info[3])[0].get("code"))
-        fn_message01 = {
-            "staId": "PARK172_EMS01",
-            "data": [],
-            "domain": "EMS",
-            "allPoints": 1,
-            "version": "0.0.1"}
-        fn_message01.update({"staId": info[0], "domain": info[1],
+        new_ruleid = data_info[4]
+        print(f'new_ruid: {new_ruleid}')
+        metric = data_info[2] + '_' + str(json.loads(data_info[3])[0].get("code"))
+        fn_message01.update({"staId": data_info[0], "domain": data_info[1],
                              "data": [
-                                 {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)}
-                                 # ,{"metric": "METE_METE01_Ua", "time": TimeUtils.get_current_timestamp(),"value": str(value)
-                             ]})
+                                 {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)}]})
         print(fn_message01)
-        cur.close()
-        conn.close()
+
         return fn_message01
 
     @classmethod
@@ -207,6 +218,7 @@ class MessageUtils:
 if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
     # MessageUtils.get_fn_message1(988823967592837120, 20)
-    # MessageUtils.get_fn_message(988823967592837120, 20)
-    MessageUtils.get_iot_message(993912110836125696)
+    MessageUtils.get_fn_message(991438417983631360, 20, 'prod')
+    MessageUtils.get_fn_message(994252264729776132, 20)
+    # MessageUtils.get_iot_message(993912110836125696)
     # MessageUtils.get_xz_message(1485857764544606208, 100, 'ffd27f05dcc14ba7841e914c5ef2c6f1')

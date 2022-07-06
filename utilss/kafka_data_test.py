@@ -41,7 +41,7 @@ class AlarmConfig:
 
     xz_test_server = "10.39.201.43:9092,10.39.201.44:9092,10.39.201.45:9092"
     prod_server = "110.39.203.16:9092,10.39.203.15:9092,10.39.203.19:9092"
-
+    fn_prod_server = '10.38.97.18:9092,10.38.97.10:9092,10.38.97.11:9092,10.38.97.17:9092'
     xz_prod_config = [xz_prod_message, xz_alarm_topic, prod_server]
     apm_prod_config = [apm_prod_message, apm_alarm_topic, prod_server]
 
@@ -55,8 +55,11 @@ class AlarmConfig:
         :return:
         '''
         if 'fn'.__eq__(type):
-            fn_message = MessageUtils.get_fn_message(ruleid, value)
-            fn_config = [fn_message, AlarmConfig.fn_alarm_topic, AlarmConfig.bd_test_server]
+            fn_message = MessageUtils.get_fn_message(ruleid, value, env)
+            if 'prod'.__eq__(env):
+                fn_config = [fn_message, AlarmConfig.fn_alarm_topic, AlarmConfig.fn_prod_server]
+            else:
+                fn_config = [fn_message, AlarmConfig.fn_alarm_topic, AlarmConfig.bd_test_server]
             return fn_config
         elif 'iot'.__eq__(type):
             fn_iot_message = MessageUtils.get_iot_message(ruleid)
@@ -82,17 +85,7 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.apm_prod_config)
-    # send_kfmsg(AlarmConfig.apm_config)
-    # send_kfmsg(AlarmConfig.fn_third_config)
-    # time.sleep(2)
-    # send_kfmsg(AlarmConfig.get_config('fn', 990976771213672448, 100))
-    send_kfmsg(AlarmConfig.get_config('iot', 993912110836125696))
-    # send_kfmsg(AlarmConfig.fn_config03)
-    # time.sleep(2)
-
-    # send_kfmsg(AlarmConfig.xz_config)
-    # send_alarm_msg()
+    send_kfmsg(AlarmConfig.get_config('fn', 991438417983631360, 8000, 'prod'))
 
     # for i in range(3):
     #     # 创建子进程时，只需要传入一个执行函数和函数的参数，创建一个Process实例，用start()方法启动
