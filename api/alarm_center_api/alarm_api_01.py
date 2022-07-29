@@ -18,7 +18,7 @@ BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
 
 # 老告警平台的后端项目
 BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
-cookie = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyNFRkVCRTQwOC01QUYzLTQ0QTQtQUVDQS03NUI0OTFEN0Q0NkMPC"}
+cookie = {"fnw_token": "ODEzNTA5OTc1ODU1MDM4NDY0MCMwMzcyRDI5Ni1BRjQ4LTREMUItQkY1OS1DMEJEQkJEOTM5MUECLIENT"}
 
 
 class AlarmApi:
@@ -27,10 +27,10 @@ class AlarmApi:
     def inst_jumpMouldCreateRule(cls):
         # 跳过模板直接生成规则
         # url = BASEURL_CONFIG_PROD + '/inst/jumpMouldCreateRule'
-        # url = BASEURL_API_TEST + '/inst/jumpMouldCreateRule'
-        url = BASEURL_API_PROD + '/inst/jumpMouldCreateRule'
-        # params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01_prod.json')
-        params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01_prod_新.json')
+        url = BASEURL_API_TEST + '/inst/jumpMouldCreateRule'
+        # url = BASEURL_API_PROD + '/inst/jumpMouldCreateRule'
+        params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01_prod_新.json')
         # r = requests.post(url, json=params, timeout=30)
         r = requests.post(url, json=params, timeout=30, cookies=cookie)
         print(r.status_code)
@@ -58,10 +58,12 @@ class AlarmApi:
     @classmethod
     def groupingAndRuleTemplates_startingOrForbidden(cls):
         # 根据规则id 启用/禁用告警实例规则   1 启用  0 禁用
+        url = BASEURL_CONFIG_TEST + '/GroupingAndRuleTemplates/startingOrForbidden'
         url = BASEURL_API_TEST + '/GroupingAndRuleTemplates/startingOrForbidden'
         # url = BASEURL_API_PROD + '/GroupingAndRuleTemplates/startingOrForbidden'
-        params = {"id": [942721739268538368], "status": "0"}
-        r = requests.post(url, json=params, timeout=10)
+        # params = {"id": [999318166888525824], "status": "1"}
+        params = ["20220720141344551436965799989285","0"]
+        r = requests.post(url, json=params, timeout=10, cookies=cookie)
         print(r.status_code)
         print(r.json())
 
@@ -207,7 +209,7 @@ class AlarmApi:
 
 if __name__ == '__main__':
     # 跳过模板直接生成规则 111
-    # AlarmApi.inst_jumpMouldCreateRule()
+    AlarmApi.inst_jumpMouldCreateRule()
     # 根据规则id 启用/禁用告警实例规则 111
     # AlarmApi.groupingAndRuleTemplates_startingOrForbidden()
     # 跳过模板直接生成规则 不包含触达 111
@@ -226,5 +228,5 @@ if __name__ == '__main__':
     # 通过时间报警历史分页 111
     # AlarmApi.get_history_by_date_and()
     # AlarmApi.getRulesBatch()
-    AlarmApi.alarmplatformjurisdiction_save()
+    # AlarmApi.alarmplatformjurisdiction_save()
     # AlarmApi.resultAndEvent_updateEventRecoverStatus()

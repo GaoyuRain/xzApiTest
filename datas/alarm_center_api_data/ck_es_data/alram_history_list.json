@@ -1,0 +1,36 @@
+{
+  "alarmMainLevel": "1",
+  "alarmStatus": 0,
+  "alarmTags": [
+    "越限类告警"
+  ],
+  "businessTag": "越限类告警",
+  "endTime": "2022-07-25 23:59:59",
+  "entIds": [
+    "1367677007133487106"
+  ],
+  "equipIds": [
+    "METE_METE11"
+  ],
+  "equipName": "浙江省府行政中心/八号楼3号4号冷冻机组",
+  "equipParentType": "仪表类",
+  "equipParentTypes": [
+    "仪表类"
+  ],
+  "eventId": 2002859656,
+  "eventIds": [
+
+  ],
+
+  "isRecoverRule": 1,
+  "pageIndex": 1,
+  "pageSize": 10,
+  "recoverStatus": 1,
+  "ruleEntIds": [
+    ""
+  ],
+  "startTime": "2022-03-25 23:59:59",
+  "systemCode": [
+    "PARK1037_EMS01"
+  ]
+}

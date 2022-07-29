@@ -1,0 +1,15 @@
+{
+  "alarmStatus": 0,
+  "sTriggerTime": "2022-03-25 23:59:59",
+  "eTriggerTime": "2022-07-25 23:59:59",
+  "entId": "1367677007133487106",
+  "equipIds": [
+    "METE_METE12"
+  ],
+  "equipName": "浙江省府行政中心/八号楼1号、2号冷冻机组",
+  "instanceId": 958734891845394432,
+  "pageIndex": 1,
+  "pageSize": 10,
+  "ruleEntId": "1367677007133487106",
+  "staId": "PARK1037_EMS01"
+}

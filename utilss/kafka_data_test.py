@@ -2,6 +2,7 @@ import random
 import subprocess
 import time
 from multiprocessing import Pool, Process
+from typing import List
 
 from utilss.kafka_data_utils import KProducer
 from utilss.message_utils import MessageUtils
@@ -42,11 +43,12 @@ class AlarmConfig:
     xz_test_server = "10.39.201.43:9092,10.39.201.44:9092,10.39.201.45:9092"
     prod_server = "110.39.203.16:9092,10.39.203.15:9092,10.39.203.19:9092"
     fn_prod_server = '10.38.97.18:9092,10.38.97.10:9092,10.38.97.11:9092,10.38.97.17:9092'
+    fn_iot_prod_server = '10.39.30.92:9092,10.39.30.99:9092,10.39.30.100:9092'
     xz_prod_config = [xz_prod_message, xz_alarm_topic, prod_server]
     apm_prod_config = [apm_prod_message, apm_alarm_topic, prod_server]
 
     @staticmethod
-    def get_config(type, ruleid, value=None, env=None):
+    def get_config(type, ruleid, value=None, env='dev', total=0):
         '''
         :param type: 消息类型 fn 泛能设备测点规则  iot 泛能离线规则 xz 新智告警规则 apm 监控告警规则
         :param ruleid: 规则id
@@ -62,8 +64,11 @@ class AlarmConfig:
                 fn_config = [fn_message, AlarmConfig.fn_alarm_topic, AlarmConfig.bd_test_server]
             return fn_config
         elif 'iot'.__eq__(type):
-            fn_iot_message = MessageUtils.get_iot_message(ruleid)
-            fn_iot_config = [fn_iot_message, AlarmConfig.fn_iot_topic, AlarmConfig.fn_iot_test_server]
+            fn_iot_message = MessageUtils.get_iot_message(ruleid, env, total=total)
+            if 'prod'.__eq__(env):
+                fn_iot_config = [fn_iot_message, AlarmConfig.fn_iot_topic, AlarmConfig.fn_iot_prod_server]
+            else:
+                fn_iot_config = [fn_iot_message, AlarmConfig.fn_iot_topic, AlarmConfig.fn_iot_test_server]
             return fn_iot_config
         elif 'xz'.__eq__(type):
             xz_message = MessageUtils.get_xz_message(1496774521609191424, 105, '154761f6003644e3ade8c4d252116b67')
@@ -78,7 +83,7 @@ class AlarmConfig:
 def send_kfmsg(config):
     # data_list = [fn_message02, fn_message01]
     # data_list = [fn_stbk_message]
-    data_list = [config[0]]
+    data_list = config[0] if isinstance(config[0], List) else [config[0]]
     kp = KProducer(topic=config[1], bootstrap_servers=config[2])
     pastition = kp.sync_producer(data_list)
     return pastition
@@ -86,8 +91,11 @@ def send_kfmsg(config):
 
 if __name__ == '__main__':
     # send_kfmsg(AlarmConfig.get_config('fn', 991438417983631360, 8000, 'prod'))
-    send_kfmsg(AlarmConfig.get_config('fn', 990976771213672448, 300, 'test'))
-
+    # send_kfmsg(AlarmConfig.get_config('fn', 997521637005004800, 307, 'dev'))
+    # 996814957694881792
+    # 17:52在线  编辑规则立即告警
+    send_kfmsg(AlarmConfig.get_config('iot', 999348874524766208, env='dev',total=0))
+    # send_kfmsg(AlarmConfig.get_config('iot', 997239182507339776, env='prod'))
     # for i in range(3):
     #     # 创建子进程时，只需要传入一个执行函数和函数的参数，创建一个Process实例，用start()方法启动
     #     p = Process(target=send_kfmsg, args=(AlarmConfig.fn_config,))

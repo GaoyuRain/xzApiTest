@@ -30,9 +30,10 @@
   "orderParamMap": {},
   "pageSize": 5,
   "separateTags": 1,
+  "eventStatus": "",
   "ruleEntIdList": "1367677007133487106",
-  "ruleType": "1",
-  "dataSource": "1",
+  "ruleType": "0",
+  "dataSource": "0",
   "selectParamMap": {
     "alarm_main_level": "alarmLevel",
     "count(alarm_main_level)": "value"
