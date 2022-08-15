@@ -5,7 +5,7 @@ Description :
 """
 import requests
 
-from constant import ALARM_BASER_URL_DEV, ALARM_BASER_URL_prod
+from constant import ALARM_CENTER_URL_DEV, ALARM_CENTER_URL_prod
 from utilss.data_utils import DataUtils
 
 apiauth_header = {"ennunifiedcsrftoken": "3f210aa54d59c513aeeb99e44c69e60d",
@@ -18,7 +18,7 @@ class RuleApi:
     def create_rule():
         # url = ALARM_BASER_URL_DEV + "/alarmRule/createRule"
         # url = ALARM_BASER_URL_prod + "/alarmRule/createRule"
-        url = ALARM_BASER_URL_DEV + "/alarmRule/createRule"
+        url = ALARM_CENTER_URL_DEV + "/alarmRule/createRule"
         print(url)
         header = {"accessToken": "APM"}
         header = {"accessToken": "fanNeng"}
@@ -31,7 +31,7 @@ class RuleApi:
 
     @staticmethod
     def create_simple_rule():
-        url = ALARM_BASER_URL_DEV + "/alarmRule/createOrUpdateRuleSimple"
+        url = ALARM_CENTER_URL_DEV + "/alarmRule/createOrUpdateRuleSimple"
         print(url)
         header = {"accessToken": "fanNeng"}
         params = DataUtils.get_json_data('alarm_center_api_data', '自动恢复_简易配置规则A越限.json')
@@ -42,7 +42,7 @@ class RuleApi:
 
     @staticmethod
     def create_update_status():
-        url = ALARM_BASER_URL_DEV + "/alarmRule/updateStatus"
+        url = ALARM_CENTER_URL_DEV + "/alarmRule/updateStatus"
         print(url)
         header = {"accessToken": "fanNeng"}
         params = {
@@ -58,7 +58,7 @@ class RuleApi:
 
     @staticmethod
     def update_rule():
-        url = ALARM_BASER_URL_DEV + "/alarmRule/createRule"
+        url = ALARM_CENTER_URL_DEV + "/alarmRule/createRule"
         params = DataUtils.get_json_data('alarm_center_api_data', '')
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
@@ -66,7 +66,7 @@ class RuleApi:
 
     @staticmethod
     def trigger_event():
-        url = ALARM_BASER_URL_DEV + '/alarmEvent/triggerEvent'
+        url = ALARM_CENTER_URL_DEV + '/alarmEvent/triggerEvent'
         params = {"eventId": 1453178185765523458, "eventName": "test016告警动作05", "ruleId": 1453178184941047808}
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
@@ -74,7 +74,7 @@ class RuleApi:
 
     @staticmethod
     def query_rule():
-        url = ALARM_BASER_URL_DEV + '/alarmRule/queryRule'
+        url = ALARM_CENTER_URL_DEV + '/alarmRule/queryRule'
         params = {'ruleId': '1449979087065059328'}
         r = requests.get(url, params=params)
         print(r.status_code)
@@ -82,7 +82,7 @@ class RuleApi:
 
     @staticmethod
     def query_event():
-        url = ALARM_BASER_URL_DEV + '/alarmEvent/listEvent'
+        url = ALARM_CENTER_URL_DEV + '/alarmEvent/listEvent'
         params = {'ruleId': '1442063255148302336'}
         r = requests.get(url, params=params)
         print(r.status_code)
@@ -90,7 +90,7 @@ class RuleApi:
 
     @staticmethod
     def query_alarm_record_list():
-        url = ALARM_BASER_URL_DEV + '/alarmRecord/list'
+        url = ALARM_CENTER_URL_DEV + '/alarmRecord/list'
         params = {"ruleIds": [1450373590758330368], "starDate": "2021-10-20 10:13:00",
                   "endDate": "2021-10-20 19:13:00", "page": 1, "pageSize": 20}
         r = requests.post(url, json=params, timeout=10)
@@ -99,7 +99,7 @@ class RuleApi:
 
     @staticmethod
     def query_all_alarm_record_list():
-        url = ALARM_BASER_URL_DEV + '/alarmRecord/listAll'
+        url = ALARM_CENTER_URL_DEV + '/alarmRecord/listAll'
         params = {"ruleIds": [1450373590758330368], "starDate": "2021-10-20 10:13:00",
                   "endDate": "2021-10-20 19:13:00", "page": 1, "pageSize": 20}
         r = requests.post(url, json=params, timeout=10)
@@ -109,7 +109,7 @@ class RuleApi:
     @staticmethod
     def creat_fb_work_by_user():
         '''手动创建工单'''
-        url = ALARM_BASER_URL_DEV + "/ruleAlarm/createFbWorkByUser"
+        url = ALARM_CENTER_URL_DEV + "/ruleAlarm/createFbWorkByUser"
         params = {"alarmId": 377748}
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
@@ -118,7 +118,7 @@ class RuleApi:
     @staticmethod
     def close_fb_work_by_user():
         '''关闭工单-测试用'''
-        url = ALARM_BASER_URL_DEV + '/ruleAlarm/closeFbWorkByUser'
+        url = ALARM_CENTER_URL_DEV + '/ruleAlarm/closeFbWorkByUser'
         params = {"alarmId": 365984}
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
@@ -128,7 +128,7 @@ class RuleApi:
 
     @staticmethod
     def delete_rule():
-        url = ALARM_BASER_URL_DEV + '/alarmRule/deleteRule'
+        url = ALARM_CENTER_URL_DEV + '/alarmRule/deleteRule'
         # url = ALARM_BASER_URL_prod + '/alarmRule/deleteRule'
         header = {"accessToken": "fanNeng"}
         # 1496102157065273344

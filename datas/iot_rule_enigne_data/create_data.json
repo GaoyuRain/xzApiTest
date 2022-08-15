@@ -1,0 +1,50 @@
+{
+	"baseVersion": "",
+	"expression": {
+		"expCalcS": [
+			{
+				"calcKey": "",
+				"left": {
+					"cycleNum": "",
+					"domain": "",
+					"entityId": "",
+					"locationId": "",
+					"metric": "",
+					"nodeType": "",
+					"tag": "",
+					"type": ""
+				},
+				"operation": {
+					"calcWay": "",
+					"op": ""
+				},
+				"right": {
+					"cycleNum": "",
+					"domain": "",
+					"entityId": "",
+					"locationId": "",
+					"metric": "",
+					"nodeType": "",
+					"tag": "",
+					"type": ""
+				},
+				"value": "",
+				"valueType": ""
+			}
+		],
+		"timeExp": {
+			"cycleNum": 0,
+			"durationValue": 0,
+			"expType": 0,
+			"isDel": 0,
+			"ruleType": 0
+		}
+	},
+	"ruleEngineAction": {
+		"actionType": "",
+		"msgContent": ""
+	},
+	"status": 0,
+	"subTenantId": "",
+	"tenantId": ""
+}

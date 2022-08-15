@@ -1,0 +1,12 @@
+{
+"groupParamList": "alarm_main_level",
+"systemCodeList": "PARK10540_EMS01",
+"eventSourceList": "alarm-config,ecb-xuancheng-customize",
+"alarmEndTime": "2022-08-09 13:47:15",
+"alarmStartTime": "2022-08-09 00:00:00",
+"equipSonTypeList": "CEC",
+"selectParamMap": {
+"count(alarm_main_level)": "value",
+"alarm_main_level": "statisticsName"
+}
+}

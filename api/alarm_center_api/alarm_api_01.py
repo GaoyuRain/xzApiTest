@@ -7,6 +7,7 @@ import json
 
 import requests
 
+from constant import BASE_ALARM_CON_URL
 from utilss.data_utils import DataUtils
 
 # api项目
@@ -18,7 +19,7 @@ BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
 
 # 老告警平台的后端项目
 BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
-cookie = {"fnw_token": "ODEzNTA5OTc1ODU1MDM4NDY0MCMwMzcyRDI5Ni1BRjQ4LTREMUItQkY1OS1DMEJEQkJEOTM5MUECLIENT"}
+cookie = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyNFQkM2NTRFMS1CRUVELTRCMDctOEUyMS1DNEJFN0ZBOTg2NzQPC"}
 
 
 class AlarmApi:
@@ -81,8 +82,8 @@ class AlarmApi:
         # 根据规则id 删除规则
         # 946469238842023936 2022-02-24 18:10:52
         # 946487488598683648 2022-02-24 19:24:34O
-        url = BASEURL_API_PROD + '/GroupingAndRuleTemplates/deletedAlarmInstanceInfo'
-        params = {"id": [946469238842023936, 946487488598683648], "status": ""}
+        url = BASEURL_API_TEST + '/GroupingAndRuleTemplates/deletedAlarmInstanceInfo'
+        params = {"id": [ 1004796187691565056], "status": ""}
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
         print(r.json())
@@ -170,8 +171,7 @@ class AlarmApi:
     def alarmplatformjurisdiction_save(cls):
         # 增加管理员权限
 
-        url = BASEURL_CONFIG_TEST + '/alarmplatformjurisdiction/save'
-        # url = BASEURL_CONFIG_PROD + '/alarmplatformjurisdiction/save'
+        url = BASE_ALARM_CON_URL + '/alarmplatformjurisdiction/save'
         params = {
             "createTime": "",
             "creator": "高雨",
@@ -179,11 +179,11 @@ class AlarmApi:
             # "entId": "1291347001673641985",
             # "openId": "1468908265805365250",
             # 测试
-            "entId": "1513729414538637313",
-            "openId": "1464525590919553026",
+            "entId": "1254591591796961281",
+            "openId": "1320633743922896897",
             # "id": 0,
             # "isDel": 0,
-            "name": "张锁锋",
+            "name": "张朝彩",
             "update_time": "",
             "updator": "高雨"
         }
@@ -209,7 +209,7 @@ class AlarmApi:
 
 if __name__ == '__main__':
     # 跳过模板直接生成规则 111
-    AlarmApi.inst_jumpMouldCreateRule()
+    # AlarmApi.inst_jumpMouldCreateRule()
     # 根据规则id 启用/禁用告警实例规则 111
     # AlarmApi.groupingAndRuleTemplates_startingOrForbidden()
     # 跳过模板直接生成规则 不包含触达 111
@@ -228,5 +228,5 @@ if __name__ == '__main__':
     # 通过时间报警历史分页 111
     # AlarmApi.get_history_by_date_and()
     # AlarmApi.getRulesBatch()
-    # AlarmApi.alarmplatformjurisdiction_save()
+    AlarmApi.alarmplatformjurisdiction_save()
     # AlarmApi.resultAndEvent_updateEventRecoverStatus()

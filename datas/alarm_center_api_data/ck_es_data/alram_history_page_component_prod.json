@@ -1,0 +1,14 @@
+{
+  "alarmStatus": 0,
+  "sTriggerTime": "2022-04-30 10:59:59",
+  "eTriggerTime": "2022-08-25 23:59:59",
+  "entId": "1291347001673641985",
+  "ruleEntId": "1291347001673641985",
+  "equipIds": [
+    ""
+  ],
+  "equipName": "一食堂-14#0.4kV进线-映射",
+  "pageIndex": 1,
+  "pageSize": 10,
+  "staId": ""
+}

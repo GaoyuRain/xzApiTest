@@ -19,7 +19,7 @@ fn_prod_server = '10.38.97.18:9092,10.38.97.10:9092,10.38.97.11:9092,10.38.97.17
 class AlarmMessageTest(TaskSet):
     def on_start(self):
         self.num = 0
-        self.fn_iot_message: List = MessageUtils.get_iot_message(998633532672454656, env='dev', total=0)
+        self.fn_iot_message: List = MessageUtils.get_iot_message(1006558976094937088, env='dev', total=0)
 
     # @task
     # def send_kfmsg(self):
@@ -49,7 +49,7 @@ class AlarmMessageTest(TaskSet):
 
 class WebsiteUser(HttpUser):
     host = ''
-    wait_time = between(50, 60)
+    wait_time = between(30, 40)
     tasks = [AlarmMessageTest]
 
 

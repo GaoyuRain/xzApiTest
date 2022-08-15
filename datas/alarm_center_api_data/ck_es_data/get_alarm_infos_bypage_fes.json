@@ -1,8 +1,8 @@
 {
-  "alarmStartTime": "2022-06-02 13:00:00",
-  "alarmEndTime": "2022-08-05 16:40:59",
+  "alarmStartTime": "2022-07-02 13:00:00",
+  "alarmEndTime": "2022-08-02 16:40:59",
   "alarmIdList": "",
-  "alarmMainLevel": "",
+  "alarmMainLevel": "1",
   "alarmMainLevelList": "",
   "alarmSubLevelList": "",
   "alarmStatus": "",
@@ -19,28 +19,30 @@
     "notLikeAlarmTagsList": ""
   },
   "curPage": 1,
-  "entityIdList": "",
-  "equipParentTypeList": "",
-  "equipSonTypeList": "",
-  "groupParamList": "alarm_tags",
-  "likeAlarmTags": "",
+  "entityIdList": "METE_METE11,ECR_ECR03",
+  "equipParentTypeList": "供冷热主设备,仪表类",
+  "equipSonTypeList": "ECR,METE",
+  "groupParamList": "alarm_main_level",
+  "likeAlarmTags": "越限",
   "likeAlarmTagsList": "",
   "likeAlarmTitleList": "",
-  "likeEquipName": "浙江省府行政中心",
+  "likeEquipName": "",
   "multiIfAlarmTagsMap": {},
   "multiIfAlarmTagsMapEnd": "",
   "notLikeAlarmTagsList": "",
-  "pageSize": 4,
+  "orderParamMap": {},
+  "pageSize": 5,
+  "separateTags": 1,
+  "ruleEntIdList": "1367677007133487106",
   "ruleType": "0",
   "dataSource": "0",
   "selectParamMap": {
-    "alarm_tags": "alarmTags",
-    "count(alarm_tags)": "value"
+    "alarm_main_level": "alarmLevel",
+    "count(alarm_main_level)": "value"
   },
-  "ruleEntIdList": "1367677007133487106",
-  "subTenantId": "1254589969461145601",
+  "subTenantId": "1367677007133487106",
   "subTenantIdArray": [
-    "1254589969461145601"
+    "1367677007133487106"
   ],
   "systemCodeList": "PARK1037_EMS01",
   "tenantId": "fanNeng"

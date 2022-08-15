@@ -1,35 +1,43 @@
 {
+  "startTime": "2022-07-25 23:59:59",
+  "endTime": "2022-08-29 23:59:59",
   "alarmMainLevel": "1",
-  "alarmStatus": 0,
+  "pageIndex": 1,
+  "pageSize": 5,
+  "isRecoverRule": 0,
+  "recoverStatus": 0,
   "alarmTags": [
-    "越限类告警"
+    "配电代运维业务线"
   ],
-  "businessTag": "越限类告警",
-  "endTime": "2022-07-25 23:59:59",
+  "businessTag": "配电代运维业务线",
   "entIds": [
-    "1367677007133487106"
+    "1254589969461145601"
   ],
   "equipIds": [
-    "METE_METE11"
+    "METE_METE575"
   ],
-  "equipName": "浙江省府行政中心/八号楼3号4号冷冻机组",
-  "equipParentType": "仪表类",
+  "equipName": "",
   "equipParentTypes": [
     "仪表类"
   ],
-  "eventId": 2002859656,
-  "eventIds": [
+  "alarmStatus": 0,
+  "equipSonTypes": [
 
   ],
-
-  "isRecoverRule": 1,
-  "pageIndex": 1,
-  "pageSize": 10,
-  "recoverStatus": 1,
-  "ruleEntIds": [
+  "isClose": "0",
+  "observationStatus": [
+    "0"
+  ],
+  "operators": [
     ""
   ],
-  "startTime": "2022-03-25 23:59:59",
+  "operationStatus": "1",
+  "readStatus": "1",
+  "reportStatus": 0,
+  "ruleEntIds": [
+    "1367677007133487106"
+  ],
+
   "systemCode": [
     "PARK1037_EMS01"
   ]

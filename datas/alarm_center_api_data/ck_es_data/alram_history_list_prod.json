@@ -1,0 +1,38 @@
+{
+  "startTime": "2022-03-25 23:59:59",
+  "endTime": "2022-08-29 23:59:59",
+  "alarmMainLevel": "",
+  "pageIndex": 1,
+  "pageSize": 5,
+  "isRecoverRule": 0,
+  "recoverStatus": 0,
+  "alarmTags": [
+    ""
+  ],
+  "businessTag": "",
+  "entIds": [
+    "1291347001673641985"
+  ],
+  "equipIds": [
+    ""
+  ],
+  "equipName": "",
+  "equipParentTypes": [
+    ""
+  ],
+  "alarmStatus": 0,
+  "equipSonTypes": [
+
+  ],
+  "operators": [
+    ""
+  ],
+  "operationStatus": "",
+  "readStatus": "",
+  "ruleEntIds": [
+    "1291347001673641985"
+  ],
+  "systemCode": [
+    "PARK710_EMS01"
+  ]
+}

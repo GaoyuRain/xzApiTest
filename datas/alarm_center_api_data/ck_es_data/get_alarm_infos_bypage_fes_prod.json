@@ -1,0 +1,12 @@
+{
+    "pageSize": 2,
+    "systemCodeList": "PARK10540_EMS01",
+    "eventSourceList": "alarm-config,ecb-xuancheng-customize",
+    "alarmEndTime": "2022-08-05 14:43:35",
+    "orderParamMap": {
+        "alarm_time": "DESC"
+    },
+    "curPage": 1,
+    "alarmStartTime": "2022-08-05 00:00:00",
+    "equipSonTypeList": "CEC"
+}

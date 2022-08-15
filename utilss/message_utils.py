@@ -91,6 +91,7 @@ class MessageUtils:
             data_info = list(cur.fetchone())
             cur.close()
             conn.close()
+            # print('data_info：',data_info)
 
         new_ruleid = data_info[4]
         print(f'new_ruid: {new_ruleid}')
@@ -247,10 +248,11 @@ class MessageUtils:
 
 if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
-    # MessageUtils.get_fn_message(991438417983631360, 20, 'prod')
-    MessageUtils.get_fn_message(997521637005004800, 60)
+    MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
+    # MessageUtils.get_fn_message(1004020223997284352, 60)
     # 设备掉线 WB01GD2211
-    # MessageUtils.get_iot_message(997239182507339776,env='prod', total=0)
+    # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
+    # MessageUtils.get_iot_message(1006573778230538240,env='dev', total=0)
     # print('-----------------------------------------------------------------------')
     # MessageUtils.get_iot_message(999348874524766208, 'test')
     # MessageUtils.get_xz_message(1485857764544606208, 100, 'ffd27f05dcc14ba7841e914c5ef2c6f1')

@@ -85,17 +85,19 @@ def send_kfmsg(config):
     # data_list = [fn_stbk_message]
     data_list = config[0] if isinstance(config[0], List) else [config[0]]
     kp = KProducer(topic=config[1], bootstrap_servers=config[2])
+    print(data_list)
     pastition = kp.sync_producer(data_list)
     return pastition
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.get_config('fn', 991438417983631360, 8000, 'prod'))
-    # send_kfmsg(AlarmConfig.get_config('fn', 997521637005004800, 307, 'dev'))
+    send_kfmsg(AlarmConfig.get_config('fn', 1008737814771429376, 100, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1004020223997284352, 888, 'dev'))
     # 996814957694881792
     # 17:52在线  编辑规则立即告警
-    send_kfmsg(AlarmConfig.get_config('iot', 999348874524766208, env='dev',total=0))
-    # send_kfmsg(AlarmConfig.get_config('iot', 997239182507339776, env='prod'))
+    # send_kfmsg(AlarmConfig.get_config('iot', 1006253595674189824, env='dev',total=0))
+    # send_kfmsg(AlarmConfig.get_config('iot', 1006558976094937088, env='dev',total=0))
+    # send_kfmsg(AlarmConfig.get_config('iot', 1006615710756028416, env='prod'))
     # for i in range(3):
     #     # 创建子进程时，只需要传入一个执行函数和函数的参数，创建一个Process实例，用start()方法启动
     #     p = Process(target=send_kfmsg, args=(AlarmConfig.fn_config,))
