@@ -20,7 +20,7 @@ BASEURL_API_TEST = "http://alarm-plateform-api.test.fnwintranet.com"
 BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
 BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
 cookie_test = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyM0OUJFNzMxNC04MzcyLTQ2REUtQTJBNS0zOTQxNkY3RDExQUIPCPC"}
-cookie_prod = {"fnw_token": "MTQ2MjA1MTQyMzMwOTA2NjI0MiMxMkI3MTlGRi0xRkZGLTRCNzUtQjExNi00MzM5QjgzRjY3NTgPCPC"}
+cookie_prod = {"fnw_token": "MTQ2MjA1MTQyMzMwOTA2NjI0MiMzMkZFM0ZDQy05NTNBLTQwNTQtODYyOS0zMTVFRDAzODEyMzcCLIENT"}
 
 
 class AlarmApi:
@@ -56,11 +56,11 @@ class AlarmApi:
     def getAlarmInstanceInfoPage(cls):
         url = BASEURL_CONFIG_TEST + '/GroupingAndRuleTemplates/getAlarmInstanceInfoPage'
         # url = BASEURL_CONFIG_PROD + '/alarmCenter/GroupingAndRuleTemplates/getAlarmInstanceInfoPage'
-        params={"pageIndex":1,"pageSize":10,"name":"",
-                "entId":"1367677007133487106","ruleStatus":[],
-                "alarmMainLevel":[],"alarmTags":[],"notifyFlag":[],
-                "type":"1","mouldId":"","equipParentType":"","equipSonType":""}
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        params = {"pageIndex": 1, "pageSize": 10, "name": "",
+                  "entId": "1367677007133487106", "ruleStatus": [],
+                  "alarmMainLevel": [], "alarmTags": [], "notifyFlag": [],
+                  "type": "1", "mouldId": "", "equipParentType": "", "equipSonType": ""}
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
         print(r.status_code)
         print(r.json())
 
@@ -107,16 +107,15 @@ class AlarmApi:
     def getAlarmHistoryList(cls):
         # 查询告警历史信息--以事件为主
         url = BASE_ALARM_CON_URL + "/authenticationFree/getAlarmHistoryList"
-        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_list.json')
-        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_list_prod.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_list.json')
+        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_list_prod.json')
         print(type(params))
         data1 = json.dumps(params, ensure_ascii=False)
         data2 = str(json.loads(data1))
         print(data2)
 
-        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=20)
         LogUtils.print_response(r)
-
 
     @classmethod
     def getAlarmHistoryPageForComponent(cls):
@@ -125,8 +124,9 @@ class AlarmApi:
         # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_page_component.json')
         params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_page_component_prod.json')
         print(params)
+        print(json.dumps(params, ensure_ascii=False))
 
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=20)
         LogUtils.print_response(r)
 
     @classmethod
@@ -136,43 +136,68 @@ class AlarmApi:
         params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/alram_history_page_component_prod.json')
         print(params)
 
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
         LogUtils.print_response(r)
 
     @classmethod
     def getAlarmInfos(cls):
         url = BASE_ALARM_API_URL + '/getAlarmInfos'
-        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data.json')
-        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data_prod.json')
+        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data_prod.json')
         print(params)
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=20)
         LogUtils.print_response(r)
 
     @classmethod
     def getAlarmInfosByPage(cls):
         url = BASE_ALARM_API_URL + '/getAlarmInfosByPage'
-        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes.json')
-        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes_prod.json')
-        print(params)
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
-        LogUtils.print_response(r,isformart=True)
+        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes_prod.json')
+        print(json.dumps(params))
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
+        LogUtils.print_response(r, isformart=True)
 
     @classmethod
     def getAlarmInfosFromES(cls):
         url = BASE_ALARM_API_URL + '/getAlarmInfosFromES'
-        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes.json')
-        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes_prod.json')
+        params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_bypage_fes_prod.json')
         print(params)
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
         LogUtils.print_response(r)
 
     @classmethod
     def getAlarmStatisticByPage(cls):
         url = BASE_ALARM_API_URL + "/getAlarmStatisticByPage"
         params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data.json')
+        # params = DataUtils.get_json_data('alarm_center_api_data', '/ck_es_data/get_alarm_infos_data_prod.json')
         print(params)
-        r = requests.post(url=url, cookies=cookie_test, json=params, timeout=10)
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
         LogUtils.print_response(r)
+
+    @classmethod
+    def updateAlarmEventBatch(cls):
+        url = BASE_ALARM_CON_URL + '/authenticationFree/updateAlarmEventBatch'
+        print(url)
+        params =[ {
+            "eventId": 439350825,
+            "operationStatus": "1",
+            "operationTime": "2022-08-12 10:56:48",
+            "operations": "4",
+            "operator": "1364799048039337986",
+            "operatorName": "多能工6",
+            "readStatus": "1",
+            "isClose": None,
+            "observationBeginTime": None,
+            "observationStatus": None,
+            "reportTime": None,
+            "reporter": None
+        }]
+        print(json.dumps(params,ensure_ascii=False))
+
+        r = requests.post(url=url, cookies=cookie_prod, json=params, timeout=10)
+        LogUtils.print_response(r)
+
 
 if __name__ == '__main__':
     # AlarmApi.queryEnum()
@@ -180,7 +205,7 @@ if __name__ == '__main__':
     # AlarmApi.getRuleNameList()
     # AlarmApi.getPubAlarmNewHistoryDatas()
     AlarmApi.getAlarmHistoryList()
-    # AlarmApi.getAlarmHistoryPageForComponent()
+    AlarmApi.getAlarmHistoryPageForComponent()
     # AlarmApi.getAlarmHistorySize()
     # AlarmApi.getAlarmInfosByPage()
     # AlarmApi.getAlarmInfosFromES()
@@ -188,3 +213,4 @@ if __name__ == '__main__':
     # AlarmApi.getAlarmStatisticByPage()
     # AlarmApi.getExpParseRules()
     # AlarmApi.updateTagStatus()
+    # AlarmApi.updateAlarmEventBatch()

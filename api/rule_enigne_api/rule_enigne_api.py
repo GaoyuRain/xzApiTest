@@ -3,6 +3,8 @@ author :admin
 Date : 2022/08/15
 Description : 告警规则引擎api
 """
+import json
+
 import requests
 
 from constant import BASE_RULE_ENIGINE_TEST
@@ -17,12 +19,25 @@ class RuleEnigApi:
     def create(cls):
         url = BASE_RULE_ENIGINE_TEST + '/rule/engine/create'
         # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/create'
-        params = DataUtils.get_yaml_data('iot_rule_enigne_data', 'create_data_01单测点越限.yaml')
+        params = DataUtils.get_yaml_data('iot_rule_enigne_data', 'create_data_05当前值不等于上一周期的值.yaml')
         print(params)
+        r = requests.post(url=url, json=params, cookies=cookie_test, timeout=10)
+        print(r.status_code)
+        LogUtils.print_response(r)
+
+    @classmethod
+    def update(cls):
+        url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
+        # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
+        params = DataUtils.get_yaml_data('iot_rule_enigne_data', 'create_data_07修改参数.yaml')
+        # data=json.dumps(params,ensure_ascii=False)
+        print(params)
+        # print(data)
         r = requests.post(url=url, json=params, cookies=cookie_test, timeout=10)
         print(r.status_code)
         LogUtils.print_response(r)
 
 
 if __name__ == '__main__':
-    RuleEnigApi.create()
+    # RuleEnigApi.create()
+    RuleEnigApi.update()

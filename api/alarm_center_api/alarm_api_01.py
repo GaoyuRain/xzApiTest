@@ -7,7 +7,7 @@ import json
 
 import requests
 
-from constant import BASE_ALARM_CON_URL
+from constant import BASE_ALARM_CON_URL, BASE_ALARM_API_URL
 from utilss.data_utils import DataUtils
 
 # api项目
@@ -19,7 +19,8 @@ BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
 
 # 老告警平台的后端项目
 BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
-cookie = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyNFQkM2NTRFMS1CRUVELTRCMDctOEUyMS1DNEJFN0ZBOTg2NzQPC"}
+cookie = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyNDREFCQkM5OS1DM0Y4LTQ5MDMtQTJCRi1CRjYxNDQ2MDg4RTEPC"}
+cookie_prod = {"fnw_token": "MTQ2MjA1MTQyMzMwOTA2NjI0MiMzMkZFM0ZDQy05NTNBLTQwNTQtODYyOS0zMTVFRDAzODEyMzcCLIENT"}
 
 
 class AlarmApi:
@@ -27,13 +28,11 @@ class AlarmApi:
     @classmethod
     def inst_jumpMouldCreateRule(cls):
         # 跳过模板直接生成规则
-        # url = BASEURL_CONFIG_PROD + '/inst/jumpMouldCreateRule'
-        url = BASEURL_API_TEST + '/inst/jumpMouldCreateRule'
-        # url = BASEURL_API_PROD + '/inst/jumpMouldCreateRule'
-        params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01.json')
-        # params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01_prod_新.json')
+        url = BASE_ALARM_API_URL + '/inst/jumpMouldCreateRule'
+        # params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01.json')
+        params = DataUtils.get_json_data('alarm_center_api_data', 'fn_跳过模板创建规则01_prod_新.json')
         # r = requests.post(url, json=params, timeout=30)
-        r = requests.post(url, json=params, timeout=30, cookies=cookie)
+        r = requests.post(url, json=params, timeout=30, cookies=cookie_prod)
         print(r.status_code)
         print(r.json())
 
@@ -59,11 +58,10 @@ class AlarmApi:
     @classmethod
     def groupingAndRuleTemplates_startingOrForbidden(cls):
         # 根据规则id 启用/禁用告警实例规则   1 启用  0 禁用
-        url = BASEURL_CONFIG_TEST + '/GroupingAndRuleTemplates/startingOrForbidden'
-        url = BASEURL_API_TEST + '/GroupingAndRuleTemplates/startingOrForbidden'
+        url = BASE_ALARM_API_URL + '/GroupingAndRuleTemplates/startingOrForbidden'
         # url = BASEURL_API_PROD + '/GroupingAndRuleTemplates/startingOrForbidden'
-        # params = {"id": [999318166888525824], "status": "1"}
-        params = ["20220720141344551436965799989285","0"]
+        params = {"id": [1009824739793625088], "status": "0"}
+        # params = ["1009824739793625088", "0"]
         r = requests.post(url, json=params, timeout=10, cookies=cookie)
         print(r.status_code)
         print(r.json())
@@ -82,8 +80,8 @@ class AlarmApi:
         # 根据规则id 删除规则
         # 946469238842023936 2022-02-24 18:10:52
         # 946487488598683648 2022-02-24 19:24:34O
-        url = BASEURL_API_TEST + '/GroupingAndRuleTemplates/deletedAlarmInstanceInfo'
-        params = {"id": [ 1004796187691565056], "status": ""}
+        url = BASE_ALARM_API_URL + '/GroupingAndRuleTemplates/deletedAlarmInstanceInfo'
+        params = {"id": [1009824739793625088], "status": ""}
         r = requests.post(url, json=params, timeout=10)
         print(r.status_code)
         print(r.json())
@@ -179,11 +177,11 @@ class AlarmApi:
             # "entId": "1291347001673641985",
             # "openId": "1468908265805365250",
             # 测试
-            "entId": "1254591591796961281",
-            "openId": "1320633743922896897",
+            "entId": "1555497596301598722",
+            "openId": "1555497597144653825",
             # "id": 0,
             # "isDel": 0,
-            "name": "张朝彩",
+            "name": "test222",
             "update_time": "",
             "updator": "高雨"
         }

@@ -13,26 +13,26 @@ expression:       #表达式集合
       type: '1'                #1.使用当前值;2.使用周期值
     operation:                 #运算符
       calcWay: '1'              #0.算术运算;1.比较运算;2.逻辑运算
-      op: '14'                   #运算符值
+      op: '15'                   #运算符值
     right:                      #结束节点
-      cycleNum: ''
-      domain: ''
-      entityId: ''
-      locationId: ''
-      metric: ''
-      nodeType: ''
-      tag: ''
-      type: ''
-    value: '200'           #绝对数值
-    valueType: '2'       #运算符后面的值类型:2绝对数值，1计算公式
+      cycleNum: '1'
+      domain: 'EMS'
+      entityId: 'METE_METE11'
+      locationId: 'PARK1037_EMS01'
+      metric: 'Ua'
+      nodeType: '1'
+      tag: 'METE'
+      type: '2'
+    value: ''           #绝对数值
+    valueType: '1'       #运算符后面的值类型:2绝对数值，1计算公式
   timeExp:              #时间规则
     cycleNum: 1         #告警缓存周期数（周期类报警专用）例：“n周期内 连续/累计 x次触发”中的 n
     durationValue: 0    #当表达式类型为3和4时（周期类报警），该字段为 连续次数 或 累计次数，例：“n周期内 连续/累计 x次触发”中的 x
     expType: 0          #表达式类型（0：单独一次报警 3：周期连续报警 4：周期累计报警）
 #    isDel: 0  #
 ruleEngineAction:       #触发动作
-  actionType: '0'        #规则触发执行类型（0：写入消息队列，1：告警）
-  msgContent: 'A相电压小于等于200'        #消息内容
+  actionType: '1'        #规则触发执行类型（0：写入消息队列，1：告警）
+  msgContent: 'A相电压当前值不等于上一周期的值'        #消息内容
 status: 0               #是否启用，0启用，1停止
 subTenantId: '1367677007133487106'         #接入方的子业务域，比如泛能设备的子公司，监控系统的应用租户
 tenantId: '1367677007133487106'            #接入方

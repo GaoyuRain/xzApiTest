@@ -5,6 +5,7 @@ import json
 import pymysql
 
 # test
+from utilss.db_utils import DBUtils
 from utilss.time_utils import TimeUtils
 
 
@@ -71,7 +72,7 @@ class MessageUtils:
                                        password='4kFG3lMxR7Nu',
                                        db='alarm_plateform', charset='utf8', use_unicode=True)
                 cur = conn.cursor()
-                sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
+                sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id,rule_status,update_time FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
                 cur.execute(sql)
                 data_info = list(cur.fetchone())
             except Exception as result:
@@ -86,13 +87,12 @@ class MessageUtils:
                                    # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
                                    )
             cur = conn.cursor()
-            sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
+            sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id,rule_status,update_time FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
             cur.execute(sql)
             data_info = list(cur.fetchone())
             cur.close()
             conn.close()
             # print('data_info：',data_info)
-
         new_ruleid = data_info[4]
         print(f'new_ruid: {new_ruleid}')
         metric = data_info[2] + '_' + str(json.loads(data_info[3])[0].get("code"))
@@ -100,6 +100,7 @@ class MessageUtils:
                              "data": [
                                  {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)}]})
         print(fn_message01)
+        DBUtils.check_rule_status(int(data_info[5]), str(data_info[6]))
         return fn_message01
 
     @classmethod
@@ -224,7 +225,7 @@ class MessageUtils:
         message_list = []
         for i in range(total):
             entity_id = info1[i][0]
-            data_message=copy.deepcopy(message)
+            data_message = copy.deepcopy(message)
             data_message[0].get('tags').update({"systemCode": sta_id + '_test_gy', "gatewayId": entity_id})
             message_list.append(data_message)
         print(message_list)
@@ -248,11 +249,11 @@ class MessageUtils:
 
 if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
-    MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
-    # MessageUtils.get_fn_message(1004020223997284352, 60)
+    # MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
+    MessageUtils.get_fn_message(998525905103761408, 60)
     # 设备掉线 WB01GD2211
     # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
-    # MessageUtils.get_iot_message(1006573778230538240,env='dev', total=0)
+    # MessageUtils.get_iot_message(1006247075699924992, env='dev', total=0)
     # print('-----------------------------------------------------------------------')
     # MessageUtils.get_iot_message(999348874524766208, 'test')
     # MessageUtils.get_xz_message(1485857764544606208, 100, 'ffd27f05dcc14ba7841e914c5ef2c6f1')

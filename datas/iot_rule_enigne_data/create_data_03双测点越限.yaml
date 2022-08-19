@@ -1,8 +1,8 @@
-#A相电压大于100小于200，5周期内连续2次满足 禁用状态
+#A相电压和B相电压大于等于200
 baseVersion: '1.0'   #基线规则版本号
 expression:       #表达式集合
   expCalcS:       #规则计算公式
-  - calcKey: 'A相电压大于100'   # 公式名称key
+  - calcKey: 'A相电压大于等于200'   # 公式名称key
     left:                     #开始节点
 #      cycleNum: ''             #周期数
       domain: 'EMS'            #业务域
@@ -14,34 +14,34 @@ expression:       #表达式集合
       type: '1'                #1.使用当前值;2.使用周期值
     operation:                 #运算符
       calcWay: '1'              #0.算术运算;1.比较运算;2.逻辑运算
-      op: '10'                   #运算符值
-    value: '100'           #绝对数值
+      op: '13'                   #运算符值
+    value: '200'           #绝对数值
     valueType: '2'       #运算符后面的值类型:2绝对数值，1计算公式
-  - calcKey: 'A相电压小于200'   # 公式名称key
+  - calcKey: 'B相电压大于等于200'   # 公式名称key
     left: #开始节点
       #      cycleNum: ''             #周期数
       domain: 'EMS'            #业务域
       entityId: 'METE_METE11'             #实体id
       locationId: 'PARK1037_EMS01'        #对应子域
-      metric: 'Ua'                        #nodeType为1,测点名称;nodeType为2,公式名称
+      metric: 'Ub'                        #nodeType为1,测点名称;nodeType为2,公式名称
       nodeType: '1'            #1.设备测点;2.公式节点
       tag: 'METE'              #标签
       type: '1'                #1.使用当前值;2.使用周期值
     operation: #运算符
       calcWay: '1'              #0.算术运算;1.比较运算;2.逻辑运算
-      op: '11'                   #运算符值
+      op: '13'                   #运算符值
     value: '200'           #绝对数值
     valueType: '2'       #运算符后面的值类型:2绝对数值，1计算公式
   - calcKey: '合并'   # 公式名称key
     left: #开始节点
-      metric: 'A相电压小于200'   #nodeType为1,测点名称;nodeType为2,公式名称
+      metric: 'A相电压大于等于200'   #nodeType为1,测点名称;nodeType为2,公式名称
       nodeType: '2'            #1.设备测点;2.公式节点
       type: '1'                #1.使用当前值;2.使用周期值
     operation: #运算符
       calcWay: '2'              #0.算术运算;1.比较运算;2.逻辑运算
       op: '19'                   #运算符值
     right: #结束节点
-      metric: 'A相电压大于100'
+      metric: 'B相电压大于等于200'
       nodeType: '2'
       type: '1'
     value: ''           #绝对数值
@@ -49,10 +49,11 @@ expression:       #表达式集合
   timeExp:              #时间规则
     cycleNum: 5         #告警缓存周期数（周期类报警专用）例：“n周期内 连续/累计 x次触发”中的 n
     durationValue: 2    #当表达式类型为3和4时（周期类报警），该字段为 连续次数 或 累计次数，例：“n周期内 连续/累计 x次触发”中的 x
-    expType: 3          #表达式类型（0：单独一次报警 3：周期连续报警 4：周期累计报警）
+    expType: 4          #表达式类型（0：单独一次报警 3：周期连续报警 4：周期累计报警）
+#    isDel: 0  #
 ruleEngineAction:       #触发动作
   actionType: '0'        #规则触发执行类型（0：写入消息队列，1：告警）
-  msgContent: 'A相电压大于100小于200，5周期内连续2次满足'        #消息内容
+  msgContent: 'A相电压和B相电压大于等于200'        #消息内容
 status: 1               #是否启用，0启用，1停止
 subTenantId: '1367677007133487106'         #接入方的子业务域，比如泛能设备的子公司，监控系统的应用租户
 tenantId: '1367677007133487106'            #接入方

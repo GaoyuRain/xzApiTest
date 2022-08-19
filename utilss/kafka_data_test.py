@@ -91,11 +91,13 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    send_kfmsg(AlarmConfig.get_config('fn', 1008737814771429376, 100, 'dev'))
-    # send_kfmsg(AlarmConfig.get_config('fn', 1004020223997284352, 888, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1009860968933453824, 81, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1009860968933453824, 91, 'dev'))
+    send_kfmsg(AlarmConfig.get_config('fn', 998525905103761408, 1.0, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1009895719560273920, 96, 'dev'))
     # 996814957694881792
     # 17:52在线  编辑规则立即告警
-    # send_kfmsg(AlarmConfig.get_config('iot', 1006253595674189824, env='dev',total=0))
+    # send_kfmsg(AlarmConfig.get_config('iot', 1009522074735579136, env='dev',total=0))
     # send_kfmsg(AlarmConfig.get_config('iot', 1006558976094937088, env='dev',total=0))
     # send_kfmsg(AlarmConfig.get_config('iot', 1006615710756028416, env='prod'))
     # for i in range(3):
