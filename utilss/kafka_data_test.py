@@ -28,6 +28,10 @@ xz_prod_message = {'header': {'version': '1.0'},
                    'body': [{'metric': 'TpriSideOut', 'valueNum': 100,
                              'tags': {'deviceNumber': 'cf54a0edd7904903a24cba2b04c30827',
                                       'status': 1, 'anomalousCode': 0}, 'ts': TimeUtils.get_current_timestamp()}]}
+xz_enigne_message = {"version": "1.0", "data": [
+    {"devType": "METE", "devId": "1557646223253573634", "time": str(int(TimeUtils.get_current_timestamp() / 1000)),
+     "metrics": {"ACTovCurrZrSignal": 1, "ACTProtOvloadSignal": 0
+                 }}]}
 
 
 class AlarmConfig:
@@ -37,6 +41,8 @@ class AlarmConfig:
     alarm_result_topic = "alarm_result"
     third_topic = "data_iot_third_part"
     fn_iot_topic = "data_iot_IOTM"
+    xz_enigne_test_topic = "test_iot_data"
+    xz_enigne_test_server = "10.39.52.36:9092,10.39.52.37:9092,10.39.48.156:9092"
     bd_test_server = "10.39.52.36"
     fn_iot_test_server = "10.39.10.13:9092,10.39.10.15:9092,10.39.10.16:9092"
 
@@ -78,6 +84,10 @@ class AlarmConfig:
             apm_message01 = MessageUtils.get_apm_message(1495996855845318656, 101.108)
             apm_config = [apm_message01, AlarmConfig.apm_alarm_topic, AlarmConfig.xz_test_server]
             return apm_config
+        elif 'enigne'.__eq__(type):
+            message = xz_enigne_message
+            enigne_config = [message, AlarmConfig.xz_enigne_test_topic, AlarmConfig.xz_enigne_test_server]
+            return enigne_config
 
 
 def send_kfmsg(config):
@@ -91,10 +101,12 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.get_config('fn', 1009860968933453824, 81, 'dev'))
-    # send_kfmsg(AlarmConfig.get_config('fn', 1009860968933453824, 91, 'dev'))
-    send_kfmsg(AlarmConfig.get_config('fn', 998525905103761408, 1.0, 'dev'))
-    # send_kfmsg(AlarmConfig.get_config('fn', 1009895719560273920, 96, 'dev'))
+    send_kfmsg(AlarmConfig.get_config('fn', 1020002357578354688, 121, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1017742472117997568, 1.0, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1017741490587947008, 100, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1012012069373050880, 96, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('enigne', 111))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1009898132891492352, 1.0, 'dev'))
     # 996814957694881792
     # 17:52在线  编辑规则立即告警
     # send_kfmsg(AlarmConfig.get_config('iot', 1009522074735579136, env='dev',total=0))
@@ -106,11 +118,3 @@ if __name__ == '__main__':
     #     p.start()
     #     p.join()
     #     time.sleep(5)
-
-    # for i in range(5):
-    #     par = send_kfmsg(AlarmConfig.fn_config)
-    #     time.sleep(4)
-    #     if par >= 0:
-    #         continue
-    #     else:
-    #         time.sleep(3)

@@ -36,6 +36,7 @@ class TimeUtils:
         print(timeArray)
         otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
         print(otherStyleTime)
+        return otherStyleTime
 
     @staticmethod
     def get_ctime():
@@ -44,8 +45,13 @@ class TimeUtils:
 
 if __name__ == '__main__':
     # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time() / 1000)))
-    print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-    dt = "2021-09-30 16:24:00"
+    # print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    # dt = "2021-09-30 16:24:00"
+    ctime=int(TimeUtils.get_current_timestamp()/1000)
+    print(ctime)
+    print('-----------')
+    print(TimeUtils.get_ctime_from_timestamp(1661418039))
+    print('-----------')
     # # 转换成时间数组
     # timeArray = time.strptime(dt, "%Y-%m-%d %H:%M:%S")
     # timestamp = int(time.mktime(timeArray) * 1000)

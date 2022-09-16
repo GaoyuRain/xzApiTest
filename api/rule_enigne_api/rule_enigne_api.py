@@ -37,7 +37,28 @@ class RuleEnigApi:
         print(r.status_code)
         LogUtils.print_response(r)
 
+    @classmethod
+    def query(cls):
+        # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/queryRuleList'
+        url = 'https://iot-rule-engine.ennew.com' + '/rule/engine/queryRuleList'
+        # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
+        params = {
+            "page": 1,
+            "pageSize": 10,
+            # "ruleId": "",
+            # "status": "",
+            # "subTenantId": "",
+            # "tenantId": ""
+        }
+        # data=json.dumps(params,ensure_ascii=False)
+        print(params)
+        # print(data)
+        r = requests.post(url=url, json=params, cookies=cookie_test, timeout=10)
+        print(r.status_code)
+        LogUtils.print_response(r)
+
 
 if __name__ == '__main__':
     # RuleEnigApi.create()
-    RuleEnigApi.update()
+    # RuleEnigApi.update()
+    RuleEnigApi.query()

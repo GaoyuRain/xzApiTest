@@ -20,7 +20,7 @@ BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
 # 老告警平台的后端项目
 BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
 cookie = {"fnw_token": "MTQwMzI3MzA1MTIyMTgzOTg3MyNDREFCQkM5OS1DM0Y4LTQ5MDMtQTJCRi1CRjYxNDQ2MDg4RTEPC"}
-cookie_prod = {"fnw_token": "MTQ2MjA1MTQyMzMwOTA2NjI0MiMzMkZFM0ZDQy05NTNBLTQwNTQtODYyOS0zMTVFRDAzODEyMzcCLIENT"}
+cookie_prod = {"fnw_token": "MTQ2MjA1MTQyMzMwOTA2NjI0MiNQQy1XRUIjNzVBQjVCM0EtQzUyMS00MEQyLUExQjgtNzZBQzIxNDUyRUE4PCPC"}
 
 
 class AlarmApi:
@@ -89,22 +89,24 @@ class AlarmApi:
     @classmethod
     def groupingAndRuleTemplates_getAlarmHistoryPageByInstanceId(cls):
         # 报警历史分页
-        url = BASEURL_API_PROD + '/GroupingAndRuleTemplates/getAlarmHistoryPageByInstanceId'
-        params = {"endTime": "", "startTime": "",
-                  # 线上
-                  "entId": "1291347001673641985",
-                  "instanceId": 946469238842023936,
-                  # 测试
-                  # "entId": "1254591591796961281",
-                  # "instanceId": 919978786482716672,
-                  "pageIndex": 1,
-                  "pageSize": 20,
-                  "sTriggerTime": "2022-02-13",
-                  "eTriggerTime": "2022-03-01"}
+        url = BASE_ALARM_API_URL + '/GroupingAndRuleTemplates/getAlarmHistoryPageByInstanceId'
+        # url = BASE_ALARM_CON_URL + '/GroupingAndRuleTemplates/getAlarmHistoryPageByInstanceId'
+        params = {
+            # 线上
+            "entId": "1291347001673641985",
+            "instanceId": 1014265160317079552,
+            # 测试
+            # "entId": "1254591591796961281",
+            # "instanceId": 1011316121772720128,
+            "pageIndex": 1,
+            "pageSize": 20,
+        }
 
-        r = requests.post(url, json=params, timeout=10)
+        # r = requests.post(url, json=params, timeout=10)
+        r = requests.post(url, json=params, cookies=cookie_prod, timeout=10)
         print(r.status_code)
         print(r.json())
+        LogUtils.print_response(r)
 
     @staticmethod
     def get_history_by_date_and():
@@ -177,11 +179,11 @@ class AlarmApi:
             # "entId": "1291347001673641985",
             # "openId": "1468908265805365250",
             # 测试
-            "entId": "1555497596301598722",
-            "openId": "1555497597144653825",
+            "entId": "1547499130398871553",
+            "openId": "1547499131871072257",
             # "id": 0,
             # "isDel": 0,
-            "name": "test222",
+            "name": "test333",
             "update_time": "",
             "updator": "高雨"
         }
@@ -217,7 +219,7 @@ if __name__ == '__main__':
     # 根据模板id 启用/禁用告警实例规则 1111
     # AlarmApi.inst_forbiddenByMouldIds()
     # 报警历史分页 111
-    # AlarmApi.groupingAndRuleTemplates_getAlarmHistoryPageByInstanceId()
+    AlarmApi.groupingAndRuleTemplates_getAlarmHistoryPageByInstanceId()
     # 通过时间报警历史分页 111
     # AlarmApi.groupingAndRuleTemplates_getAlarmHistoryPageByInstanceIdAndDate()
     # 根据规则id 删除规则 111
@@ -226,5 +228,5 @@ if __name__ == '__main__':
     # 通过时间报警历史分页 111
     # AlarmApi.get_history_by_date_and()
     # AlarmApi.getRulesBatch()
-    AlarmApi.alarmplatformjurisdiction_save()
+    # AlarmApi.alarmplatformjurisdiction_save()
     # AlarmApi.resultAndEvent_updateEventRecoverStatus()

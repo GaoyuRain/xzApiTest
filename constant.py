@@ -16,7 +16,8 @@ BASEURL_API_TEST = "http://alarm-plateform-api.test.fnwintranet.com"
 
 # 老告警平台的后端项目
 BASEURL_CONFIG_TEST = "http://alarm-config.test.fnwintranet.com"
-BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
+BASEURL_CONFIG_PROD = "https://alarm-config.fanneng.com"
+# BASEURL_CONFIG_PROD = "https://dp.fanneng.com/alarmCenter"
 
 # 告警规则引擎项目
 BASE_RULE_ENIGINE_TEST = "https://iot-rule-engine.dev.ennew.com"
@@ -24,10 +25,10 @@ BASE_RULE_ENIGINE_PROD = "http://iot-rule-engine.dev.ennew.com"
 
 
 # alarm_config 项目测试环境 dev prod
-con_env = "dev"
+con_env = "prod"
 
 # alarm-plateform-api 项目测试环境 dev prod
-api_env = "dev"
+api_env = "prod"
 
 
 def get_host(proj, type):

@@ -1,7 +1,7 @@
 {
   "alarmStatus": 0,
-  "sTriggerTime": "2022-04-30 10:59:59",
-  "eTriggerTime": "2022-08-25 23:59:59",
+  "sTriggerTime": "2022-04-30",
+  "eTriggerTime": "2022-08-25",
   "entId": "1291347001673641985",
   "ruleEntId": "1291347001673641985",
   "equipIds": [

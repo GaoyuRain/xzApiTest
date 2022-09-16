@@ -1,12 +1,9 @@
 {
   "alarmStatus": 0,
-  "sTriggerTime": "2022-04-30 10:59:59",
-  "eTriggerTime": "2022-08-25 23:59:59",
+  "sTriggerTime": "2022-08-02",
+  "eTriggerTime": "2022-08-02",
   "entId": "1367677007133487106",
   "ruleEntId": "1367677007133487106",
-  "equipIds": [
-    "METE_METE12"
-  ],
   "equipName": "浙江省府行政中心/八号楼1号、2号冷冻机组",
   "instanceId": 1004020223997284352,
   "pageIndex": 1,

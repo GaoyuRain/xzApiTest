@@ -1,12 +1,15 @@
 {
-"groupParamList": "alarm_main_level",
-"systemCodeList": "PARK10540_EMS01",
-"eventSourceList": "alarm-config,ecb-xuancheng-customize",
-"alarmEndTime": "2022-08-09 13:47:15",
-"alarmStartTime": "2022-08-09 00:00:00",
-"equipSonTypeList": "CEC",
-"selectParamMap": {
-"count(alarm_main_level)": "value",
-"alarm_main_level": "statisticsName"
-}
+    "alarmEndTime": "2022-08-30 23:59:59",
+    "alarmStartTime": "2022-01-01 00:00:00",
+    "curPage": 0,
+    "eventSourceList": "alarm-config,ecb-xuancheng-customize",
+    "isShow": 0,
+    "likeAlarmTagsList": "事故,越限,变位,故障,安全帽识别,陌生人识别,入侵检测,逗留检测",
+    "pageSize": 0,
+    "ruleEntIdList": "1534083403765895169",
+    "selectParamMap": {
+        "count(*)": "count"
+    },
+    "separateTags": 0,
+    "tenantId": "fanNeng"
 }

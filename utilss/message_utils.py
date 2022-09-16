@@ -64,22 +64,25 @@ class MessageUtils:
     @classmethod
     def get_fn_message(cls, ruleid, value, env='dev'):
         fn_message01 = {"staId": "PARK172_EMS01", "data": [], "domain": "EMS", "allPoints": 1, "version": "0.0.1"}
-        data_info = []
         if "prod".__eq__(env) is True:
-            try:
-                # 老平台数据库 prod
-                conn = pymysql.connect(host='10.39.45.74', port=3306, user='alarm_plateform_slave',
-                                       password='4kFG3lMxR7Nu',
-                                       db='alarm_plateform', charset='utf8', use_unicode=True)
-                cur = conn.cursor()
-                sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id,rule_status,update_time FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
-                cur.execute(sql)
-                data_info = list(cur.fetchone())
-            except Exception as result:
-                print("错误: %s" % result)
-            finally:
-                cur.close()
-                conn.close()
+            # 线上环境目前不能直连数据库，暂只能使用 总有功功率P 这一个测点
+            # try:
+            #     # 老平台数据库 prod
+            #     conn = pymysql.connect(host='10.39.45.74', port=3306, user='alarm_plateform_slave',
+            #                            password='4kFG3lMxR7Nu',
+            #                            db='alarm_plateform', charset='utf8', use_unicode=True)
+            #     cur = conn.cursor()
+            #     sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id,rule_status,update_time FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
+            #     cur.execute(sql)
+            #     data_info = list(cur.fetchone())
+            data_info = ["PARK710_EMS01", "EMS", "METE_METE01",
+                         '''[{"name":"总有功功率","code":"P","valueType":"double","unit":"[kW]"},{"name":"远程操作","code":"ACTRmt","valueType":"double","unit":"[-]"},{"name":"所属公司名称","code":"13"},{"name":"当前设备名称","code":"14"},{"name":"消息发生时间","code":"15"}]'''
+                , "1564585639197499392", "1", "2022-09-06 11:23:22"]
+        # except Exception as result:
+        #     print("错误: %s" % result)
+        # finally:
+        #     cur.close()
+        #     conn.close()
         else:
             # 老平台数据库 test
             conn = pymysql.connect(host='10.39.30.21', user='fn_db_test', password='fn_db_test20180411',
@@ -250,7 +253,7 @@ class MessageUtils:
 if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
     # MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
-    MessageUtils.get_fn_message(998525905103761408, 60)
+    MessageUtils.get_fn_message(1012012060443377664, 60)
     # 设备掉线 WB01GD2211
     # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
     # MessageUtils.get_iot_message(1006247075699924992, env='dev', total=0)

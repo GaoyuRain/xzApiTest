@@ -1,39 +1,30 @@
 {
   "startTime": "2022-03-25 23:59:59",
   "endTime": "2022-08-29 23:59:59",
-  "alarmMainLevel": "1",
+  "alarmMainLevel": "1,2,3,4",
   "pageIndex": 1,
-  "pageSize": 5,
-  "isRecoverRule": 0,
-  "recoverStatus": 0,
+  "pageSize": 10,
+  "isRecoverRule": 1,
+  "recoverStatus": 1,
   "alarmTags": [
-    "配电代运维业务线"
+    "新奥动力业务线"
   ],
-  "businessTag": "配电代运维业务线",
+  "businessTag": "",
   "entIds": [
-    "1254589969461145601"
+    "1367677007133487106"
   ],
   "equipIds": [
-    "METE_METE575"
+    ""
   ],
   "equipName": "",
   "equipParentTypes": [
     "仪表类"
   ],
-  "alarmStatus": 0,
+  "alarmStatus": 1,
   "equipSonTypes": [
 
   ],
-  "isClose": "0",
-  "observationStatus": [
-    "0"
-  ],
-  "operators": [
-    ""
-  ],
-  "operationStatus": "1",
-  "readStatus": "1",
-  "reportStatus": 0,
+
   "ruleEntIds": [
     "1367677007133487106"
   ],
