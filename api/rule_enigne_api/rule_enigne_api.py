@@ -29,7 +29,8 @@ class RuleEnigApi:
     def update(cls):
         url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
         # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
-        params = DataUtils.get_yaml_data('iot_rule_enigne_data', 'create_data_07修改参数.yaml')
+        # params = DataUtils.get_yaml_data('iot_rule_enigne_data', 'create_data_07修改参数.yaml')
+        params = {"test": "test"}
         # data=json.dumps(params,ensure_ascii=False)
         print(params)
         # print(data)
@@ -40,7 +41,7 @@ class RuleEnigApi:
     @classmethod
     def query(cls):
         # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/queryRuleList'
-        url = 'https://iot-rule-engine.ennew.com' + '/rule/engine/queryRuleList'
+        url = 'https://iot-rule-engine.dev.ennew.com' + '/rule/engine/queryRuleList'
         # url = BASE_RULE_ENIGINE_TEST + '/rule/engine/update'
         params = {
             "page": 1,
@@ -60,5 +61,5 @@ class RuleEnigApi:
 
 if __name__ == '__main__':
     # RuleEnigApi.create()
-    # RuleEnigApi.update()
-    RuleEnigApi.query()
+    RuleEnigApi.update()
+    # RuleEnigApi.query()

@@ -41,8 +41,8 @@ class AlarmConfig:
     alarm_result_topic = "alarm_result"
     third_topic = "data_iot_third_part"
     fn_iot_topic = "data_iot_IOTM"
-    xz_enigne_test_topic = "test_iot_data"
-    xz_enigne_test_server = "10.39.52.36:9092,10.39.52.37:9092,10.39.48.156:9092"
+    xz_enigne_test_topic = "data_iot_menu"
+    xz_enigne_test_server = "10.39.68.191:9092,10.39.68.192:9092,10.39.68.193:9092"
     bd_test_server = "10.39.52.36"
     fn_iot_test_server = "10.39.10.13:9092,10.39.10.15:9092,10.39.10.16:9092"
 
@@ -85,7 +85,7 @@ class AlarmConfig:
             apm_config = [apm_message01, AlarmConfig.apm_alarm_topic, AlarmConfig.xz_test_server]
             return apm_config
         elif 'enigne'.__eq__(type):
-            message = xz_enigne_message
+            message = MessageUtils.get_hld_message(ruleid, value)
             enigne_config = [message, AlarmConfig.xz_enigne_test_topic, AlarmConfig.xz_enigne_test_server]
             return enigne_config
 
@@ -95,13 +95,14 @@ def send_kfmsg(config):
     # data_list = [fn_stbk_message]
     data_list = config[0] if isinstance(config[0], List) else [config[0]]
     kp = KProducer(topic=config[1], bootstrap_servers=config[2])
-    print(data_list)
+    # print(data_list)
     pastition = kp.sync_producer(data_list)
     return pastition
 
 
 if __name__ == '__main__':
-    send_kfmsg(AlarmConfig.get_config('fn', 1020002357578354688, 121, 'dev'))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1021078703444381696, 10, 'dev'))
+    send_kfmsg(AlarmConfig.get_config('enigne', 1572461914149814272, 17))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017742472117997568, 1.0, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017741490587947008, 100, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1012012069373050880, 96, 'dev'))

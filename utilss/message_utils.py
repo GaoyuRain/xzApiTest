@@ -101,7 +101,10 @@ class MessageUtils:
         metric = data_info[2] + '_' + str(json.loads(data_info[3])[0].get("code"))
         fn_message01.update({"staId": data_info[0], "domain": data_info[1],
                              "data": [
-                                 {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)}]})
+                                 {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)},
+                                 {"metric": "METE_METE56_DURCurrImbal", "time": TimeUtils.get_current_timestamp(),
+                                  "value": 300}
+                             ]})
         print(fn_message01)
         DBUtils.check_rule_status(int(data_info[5]), str(data_info[6]))
         return fn_message01
@@ -140,6 +143,49 @@ class MessageUtils:
         xz_message01.update({"value": str(value)})
         print(xz_message)
         return xz_message
+
+    @classmethod
+    def get_hld_message(cls, ruleid, value):
+        conn = pymysql.connect(host='10.39.202.254', user='alarm_center_rw', password='Fm9l^hnnjlP*',
+                               db='iot_rule_engine', charset='utf8'
+                               # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
+                               )
+        cur = conn.cursor()
+        # LIMIT 0, 2
+        sql = f'SELECT metric FROM rule_expression_variable WHERE rule_id={ruleid} AND deleted=0 order by id Desc;'
+
+        result = cur.execute(sql)
+        info = list(cur.fetchall())
+        print(info)
+        cur.close()
+        conn.close()
+
+        conn1 = pymysql.connect(host='10.39.202.254', user='alarm_center_rw', password='Fm9l^hnnjlP*',
+                                db='iot-alarm-web', charset='utf8')
+        cur1 = conn1.cursor()
+
+        sql1 = f'SELECT product_id,eq_id,model_code,tenant_id FROM iot_alarm_rule_info WHERE rule_id={ruleid} order by id Desc LIMIT 1;'
+
+        result = cur1.execute(sql1)
+        info1 = list(cur1.fetchone())
+        cur1.close()
+        conn1.close()
+        xz_msg_list = []
+        for i in range(info.__len__()):
+            xz_message = {"resume": "N",
+                          "productId": info1[0],
+                          # 全链路-电能表所属设备 1567774645875249152  1571801264285683712  1571801357315346432
+                          "devType": info1[2], "devId": info1[1] if info1[1] is not None else "1571801357315346432",
+                          "debug": 0,
+                          "data": [{"metric": info[i][0], "value": value}
+                                   # ,{"metric": info[1][0], "value": 700}
+                                   ],
+                          "tenantId": "huludao",
+                          "version": "1.0",
+                          "ts": int(TimeUtils.get_current_timestamp())}
+            xz_msg_list.append(xz_message)
+        print(xz_msg_list)
+        return xz_msg_list
 
     @classmethod
     def get_iot_message(cls, ruleid, env='dev', total=0):
@@ -253,7 +299,8 @@ class MessageUtils:
 if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
     # MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
-    MessageUtils.get_fn_message(1012012060443377664, 60)
+    # MessageUtils.get_fn_message(1012012060443377664, 60)
+    MessageUtils.get_hld_message(1571743702386933760, 60)
     # 设备掉线 WB01GD2211
     # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
     # MessageUtils.get_iot_message(1006247075699924992, env='dev', total=0)
