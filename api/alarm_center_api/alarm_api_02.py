@@ -181,18 +181,14 @@ class AlarmApi:
         url = BASE_ALARM_CON_URL + '/authenticationFree/updateAlarmEventBatch'
         print(url)
         params =[ {
-            "eventId": 439350825,
+            "eventId": 2006050845,
             "operationStatus": "1",
             "operationTime": "2022-08-12 10:56:48",
             "operations": "4",
             "operator": "1364799048039337986",
             "operatorName": "多能工6",
-            "readStatus": "1",
-            "isClose": None,
-            "observationBeginTime": None,
-            "observationStatus": None,
-            "reportTime": None,
-            "reporter": None
+            "readStatus": "1"
+
         }]
         print(json.dumps(params,ensure_ascii=False))
 

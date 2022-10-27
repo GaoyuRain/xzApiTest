@@ -5,6 +5,8 @@ import json
 import pymysql
 
 # test
+from constant import ALM_CON_DEV_DBCON, ENIGINE_DEV_DBCON, ENIGINE_IOTWEB_DEV_DBCON, HLD_ENIGINE_DEV_DBCON, \
+    HLD_ENIGINE_IOTWEB_DEV_DBCON
 from utilss.db_utils import DBUtils
 from utilss.time_utils import TimeUtils
 
@@ -84,28 +86,18 @@ class MessageUtils:
         #     cur.close()
         #     conn.close()
         else:
-            # 老平台数据库 test
-            conn = pymysql.connect(host='10.39.30.21', user='fn_db_test', password='fn_db_test20180411',
-                                   db='alarm-plateform', charset='utf8'
-                                   # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
-                                   )
-            cur = conn.cursor()
             sql = f'SELECT sta_id,domain,equip_id,alarm_desc_map,rule_id,rule_status,update_time FROM alarm_instance_info WHERE id={ruleid}  order by id Desc LIMIT 1;'
-            cur.execute(sql)
-            data_info = list(cur.fetchone())
-            cur.close()
-            conn.close()
-            # print('data_info：',data_info)
+            data_info = list(DBUtils.get_db_info(ALM_CON_DEV_DBCON, sql)[0])
+            print('data_info：', data_info)
         new_ruleid = data_info[4]
         print(f'new_ruid: {new_ruleid}')
         metric = data_info[2] + '_' + str(json.loads(data_info[3])[0].get("code"))
         fn_message01.update({"staId": data_info[0], "domain": data_info[1],
                              "data": [
                                  {"metric": metric, "time": TimeUtils.get_current_timestamp(), "value": str(value)},
-                                 {"metric": "METE_METE56_DURCurrImbal", "time": TimeUtils.get_current_timestamp(),
-                                  "value": 300}
+                                 # {"metric": "METE_METE56_DURCurrImbal", "time": TimeUtils.get_current_timestamp(),"value": 300}
                              ]})
-        print(fn_message01)
+        print([fn_message01])
         DBUtils.check_rule_status(int(data_info[5]), str(data_info[6]))
         return fn_message01
 
@@ -145,47 +137,47 @@ class MessageUtils:
         return xz_message
 
     @classmethod
-    def get_hld_message(cls, ruleid, value):
-        conn = pymysql.connect(host='10.39.202.254', user='alarm_center_rw', password='Fm9l^hnnjlP*',
-                               db='iot_rule_engine', charset='utf8'
-                               # autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。
-                               )
-        cur = conn.cursor()
-        # LIMIT 0, 2
-        sql = f'SELECT metric FROM rule_expression_variable WHERE rule_id={ruleid} AND deleted=0 order by id Desc;'
-
-        result = cur.execute(sql)
-        info = list(cur.fetchall())
-        print(info)
-        cur.close()
-        conn.close()
-
-        conn1 = pymysql.connect(host='10.39.202.254', user='alarm_center_rw', password='Fm9l^hnnjlP*',
-                                db='iot-alarm-web', charset='utf8')
-        cur1 = conn1.cursor()
-
-        sql1 = f'SELECT product_id,eq_id,model_code,tenant_id FROM iot_alarm_rule_info WHERE rule_id={ruleid} order by id Desc LIMIT 1;'
-
-        result = cur1.execute(sql1)
-        info1 = list(cur1.fetchone())
-        cur1.close()
-        conn1.close()
-        xz_msg_list = []
+    def get_enigine_message(cls, ruleid, value, type=None):
+        # 查询应用规则id对应的规则引擎id
+        sql = f'SELECT rule_engine_id FROM iot_alarm_rule_engine_relat WHERE rule_id={ruleid} AND rule_type=0;'
+        if type is not None and "enigne".__eq__(type):
+            egni_ruleid = DBUtils.get_db_info(ENIGINE_IOTWEB_DEV_DBCON, sql)[0][0]
+        else:
+            egni_ruleid = DBUtils.get_db_info(HLD_ENIGINE_IOTWEB_DEV_DBCON, sql)[0][0]
+        #  查询规则对应的测点
+        sql2 = f'SELECT metric FROM rule_expression_variable WHERE rule_id={egni_ruleid} AND deleted=0 order by id Desc;'
+        #  查询规则设置的productId devType
+        sql1 = f'SELECT product_id,eq_id,model_code,tenant_id FROM iot_alarm_rule_info WHERE id={ruleid} order by id Desc LIMIT 1;'
+        if type is not None and "enigne".__eq__(type):
+            info = DBUtils.get_db_info(ENIGINE_DEV_DBCON, sql2)
+            print("info:", info)
+            info1 = DBUtils.get_db_info(ENIGINE_IOTWEB_DEV_DBCON, sql1)
+            print(info1)
+        else:
+            info = DBUtils.get_db_info(HLD_ENIGINE_DEV_DBCON, sql2)
+            print(info)
+            info1 = DBUtils.get_db_info(HLD_ENIGINE_IOTWEB_DEV_DBCON, sql1)
+            print(info1)
+        metric_list = []
         for i in range(info.__len__()):
-            xz_message = {"resume": "N",
-                          "productId": info1[0],
-                          # 全链路-电能表所属设备 1567774645875249152  1571801264285683712  1571801357315346432
-                          "devType": info1[2], "devId": info1[1] if info1[1] is not None else "1571801357315346432",
-                          "debug": 0,
-                          "data": [{"metric": info[i][0], "value": value}
-                                   # ,{"metric": info[1][0], "value": 700}
-                                   ],
-                          "tenantId": "huludao",
-                          "version": "1.0",
-                          "ts": int(TimeUtils.get_current_timestamp())}
-            xz_msg_list.append(xz_message)
-        print(xz_msg_list)
-        return xz_msg_list
+            data = {"metric": info[i][0], "value": value}
+            metric_list.append(data)
+        devId = info1[0][1]
+        # devId = "2688_92779"
+        if devId is None or ''.__eq__(devId):
+            # dev环境设备id：全链路-电能表所属设备 1567774645875249152  1571801264285683712  1571801357315346432 1567034404684042254
+            # 葫芦岛设备id：1574947704562388992  1579374984009224192
+            devId = "1567774645875249152"
+        xz_message = {"resume": "N",
+                      "productId": str(info1[0][0]),
+                      "devType": info1[0][2], "devId": devId,
+                      "debug": 0,
+                      "data": metric_list,
+                      "tenantId": info1[0][3],
+                      "version": "1.0",
+                      "ts": int(TimeUtils.get_current_timestamp())}
+        print("xz_message:",xz_message)
+        return xz_message
 
     @classmethod
     def get_iot_message(cls, ruleid, env='dev', total=0):
@@ -300,7 +292,7 @@ if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
     # MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
     # MessageUtils.get_fn_message(1012012060443377664, 60)
-    MessageUtils.get_hld_message(1571743702386933760, 60)
+    MessageUtils.get_enigine_message(1579046651972538368, 60, 'enigne')
     # 设备掉线 WB01GD2211
     # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
     # MessageUtils.get_iot_message(1006247075699924992, env='dev', total=0)

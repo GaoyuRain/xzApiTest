@@ -20,13 +20,13 @@ class AlarmMessageTest(TaskSet):
     def on_start(self):
         self.num = 0
         # self.fn_iot_message: List = MessageUtils.get_iot_message(997521637005004800, env='dev', total=11)
-        self.fn_message= MessageUtils.get_fn_message(997521637005004800, random.randint(300, 500))
+        self.fn_message= MessageUtils.get_fn_message(997464012523507712, random.randint(50, 500))
 
 
     @task
     def send_kfmsg(self):
         # data_list = [ MessageUtils.get_fn_message(999318166888525824, random.randint(300, 500))]
-        data_list = [ MessageUtils.get_fn_message(963030539394035713, random.randint(1, 27))]
+        data_list = [ MessageUtils.get_fn_message(997464012523507712, random.randint(50, 500))]
         kp = KProducer(topic="data_iot_EMS", bootstrap_servers="10.39.52.36")
         pastition = kp.sync_producer(data_list)
         time.sleep(2)
@@ -55,5 +55,5 @@ class WebsiteUser(HttpUser):
 
 if __name__ == '__main__':
     # 60s十条左右
-    l_cmd = 'locust -f ../script/send_message_locust.py  --headless -u 1 -r 1 --run-time 100s  --stop-timeout 20'
+    l_cmd = 'locust -f ../script/send_message_locust.py  --headless -u 1 -r 1 --run-time 120s  --stop-timeout 20'
     subprocess.call(l_cmd, shell=True)

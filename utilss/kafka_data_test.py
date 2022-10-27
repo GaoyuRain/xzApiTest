@@ -45,6 +45,9 @@ class AlarmConfig:
     xz_enigne_test_server = "10.39.68.191:9092,10.39.68.192:9092,10.39.68.193:9092"
     bd_test_server = "10.39.52.36"
     fn_iot_test_server = "10.39.10.13:9092,10.39.10.15:9092,10.39.10.16:9092"
+    hld_test_server = "10.39.82.91:29092"
+    # hld_test_topic = "data_iot_huludao"
+    hld_test_topic = "data_iot_metric"
 
     xz_test_server = "10.39.201.43:9092,10.39.201.44:9092,10.39.201.45:9092"
     prod_server = "110.39.203.16:9092,10.39.203.15:9092,10.39.203.19:9092"
@@ -85,8 +88,12 @@ class AlarmConfig:
             apm_config = [apm_message01, AlarmConfig.apm_alarm_topic, AlarmConfig.xz_test_server]
             return apm_config
         elif 'enigne'.__eq__(type):
-            message = MessageUtils.get_hld_message(ruleid, value)
+            message = MessageUtils.get_enigine_message(ruleid, value, 'enigne')
             enigne_config = [message, AlarmConfig.xz_enigne_test_topic, AlarmConfig.xz_enigne_test_server]
+            return enigne_config
+        elif 'hld'.__eq__(type):
+            message = MessageUtils.get_enigine_message(ruleid, value, 'hld')
+            enigne_config = [message, AlarmConfig.hld_test_topic, AlarmConfig.hld_test_server]
             return enigne_config
 
 
@@ -94,6 +101,7 @@ def send_kfmsg(config):
     # data_list = [fn_message02, fn_message01]
     # data_list = [fn_stbk_message]
     data_list = config[0] if isinstance(config[0], List) else [config[0]]
+    print(data_list)
     kp = KProducer(topic=config[1], bootstrap_servers=config[2])
     # print(data_list)
     pastition = kp.sync_producer(data_list)
@@ -101,8 +109,11 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.get_config('fn', 1021078703444381696, 10, 'dev'))
-    send_kfmsg(AlarmConfig.get_config('enigne', 1572461914149814272, 17))
+    # send_kfmsg(AlarmConfig.get_config('fn', 998525905103761408, 100, 'dev'))
+    send_kfmsg(AlarmConfig.get_config('enigne', 1585145749287530496, 913))
+    # send_kfmsg(AlarmConfig.get_config('enigne', 1580119529666805760, 18))
+    # todo 先表里设置为None
+    # send_kfmsg(AlarmConfig.get_config('hld', 1580386248758210560, 10.6))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017742472117997568, 1.0, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017741490587947008, 100, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1012012069373050880, 96, 'dev'))
@@ -110,7 +121,7 @@ if __name__ == '__main__':
     # send_kfmsg(AlarmConfig.get_config('fn', 1009898132891492352, 1.0, 'dev'))
     # 996814957694881792
     # 17:52在线  编辑规则立即告警
-    # send_kfmsg(AlarmConfig.get_config('iot', 1009522074735579136, env='dev',total=0))
+    # send_kfmsg(AlarmConfig.get_config('iot', 1024254574959464448, env='dev',total=0))
     # send_kfmsg(AlarmConfig.get_config('iot', 1006558976094937088, env='dev',total=0))
     # send_kfmsg(AlarmConfig.get_config('iot', 1006615710756028416, env='prod'))
     # for i in range(3):
