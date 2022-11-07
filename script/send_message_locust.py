@@ -49,7 +49,7 @@ class AlarmMessageTest(TaskSet):
 
 class WebsiteUser(HttpUser):
     host = ''
-    wait_time = between(5, 10)
+    wait_time = between(1, 10)
     tasks = [AlarmMessageTest]
 
 

@@ -48,6 +48,10 @@ class AlarmConfig:
     hld_test_server = "10.39.82.91:29092"
     # hld_test_topic = "data_iot_huludao"
     hld_test_topic = "data_iot_metric"
+    nlam_test_server = "10.39.64.34:9092"
+    nlam_metric_topic = "data_iot_metric"
+    nlam_event_topic = "data_iot_event"
+    nlam_fat_server = "10.39.64.34:9092"
 
     xz_test_server = "10.39.201.43:9092,10.39.201.44:9092,10.39.201.45:9092"
     prod_server = "110.39.203.16:9092,10.39.203.15:9092,10.39.203.19:9092"
@@ -95,6 +99,14 @@ class AlarmConfig:
             message = MessageUtils.get_enigine_message(ruleid, value, 'hld')
             enigne_config = [message, AlarmConfig.hld_test_topic, AlarmConfig.hld_test_server]
             return enigne_config
+        elif 'nalm_metric'.__eq__(type):
+            message = MessageUtils.get_new_alarm_message(ruleid, rule_type=0, value=value)
+            enigne_config = [message, AlarmConfig.nlam_metric_topic, AlarmConfig.nlam_test_server]
+            return enigne_config
+        elif 'nalm_event'.__eq__(type):
+            message = MessageUtils.get_new_alarm_message(ruleid, rule_type=2, value=value)
+            enigne_config = [message, AlarmConfig.nlam_event_topic, AlarmConfig.nlam_test_server]
+            return enigne_config
 
 
 def send_kfmsg(config):
@@ -109,11 +121,12 @@ def send_kfmsg(config):
 
 
 if __name__ == '__main__':
-    # send_kfmsg(AlarmConfig.get_config('fn', 998525905103761408, 100, 'dev'))
-    send_kfmsg(AlarmConfig.get_config('enigne', 1585145749287530496, 913))
-    # send_kfmsg(AlarmConfig.get_config('enigne', 1580119529666805760, 18))
+    # send_kfmsg(AlarmConfig.get_config('fn', 1037061336687394816, 700, 'prod'))
+    # send_kfmsg(AlarmConfig.get_config('enigne', 1585145749287530496, 913))
+    # send_kfmsg(AlarmConfig.get_config('nalm_metric', 1588425757567471616, 345))
+    # send_kfmsg(AlarmConfig.get_config('nalm_event', 1588425757567471616, 306))
     # todo 先表里设置为None
-    # send_kfmsg(AlarmConfig.get_config('hld', 1580386248758210560, 10.6))
+    send_kfmsg(AlarmConfig.get_config('hld', 1580386248758210560, 10.6))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017742472117997568, 1.0, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1017741490587947008, 100, 'dev'))
     # send_kfmsg(AlarmConfig.get_config('fn', 1012012069373050880, 96, 'dev'))

@@ -6,7 +6,7 @@ import pymysql
 
 # test
 from constant import ALM_CON_DEV_DBCON, ENIGINE_DEV_DBCON, ENIGINE_IOTWEB_DEV_DBCON, HLD_ENIGINE_DEV_DBCON, \
-    HLD_ENIGINE_IOTWEB_DEV_DBCON
+    HLD_ENIGINE_IOTWEB_DEV_DBCON, NEW_ALM_DEV_DBCON
 from utilss.db_utils import DBUtils
 from utilss.time_utils import TimeUtils
 
@@ -176,8 +176,72 @@ class MessageUtils:
                       "tenantId": info1[0][3],
                       "version": "1.0",
                       "ts": int(TimeUtils.get_current_timestamp())}
-        print("xz_message:",xz_message)
+        print("xz_message:", xz_message)
         return xz_message
+
+    @classmethod
+    def get_new_alarm_message(cls, ruleid, rule_type, value):
+        '''
+        :param ruleid: 规则id
+        :param value: 测点值
+        :param type: 0 测点告警   1 设备事件告警
+        :return:
+        '''
+        # 查询应用规则id对应的规则引擎id
+        sql = f'SELECT rule_engine_id FROM iot_alarm_rule_engine_relat WHERE rule_id={ruleid} AND rule_type={rule_type};'
+        egni_ruleid = DBUtils.get_db_info(NEW_ALM_DEV_DBCON, sql)[0][0]
+        #  查询规则对应的测点
+        sql_metric = f'SELECT metric FROM iot_alarm_rule_metric WHERE rule_id={ruleid}  AND metric_type={rule_type + 1} ;'
+        metric_info = DBUtils.get_db_info(NEW_ALM_DEV_DBCON, sql_metric)
+        # print(egni_ruleid)
+        # print(metric)
+        sql1 = f'SELECT product_id,eq_id,model_code,tenant_id FROM iot_alarm_rule_info WHERE id={ruleid} order by id Desc LIMIT 1;'
+        info1 = DBUtils.get_db_info(NEW_ALM_DEV_DBCON, sql1)
+        # print(info1)
+
+        devId = info1[0][1]
+        # devId = "2688_92779"
+        if devId is None or ''.__eq__(devId):
+            # dev环境设备id：全链路-电能表所属设备 1567774645875249152  1571801264285683712  1571801357315346432 1567034404684042254
+            # 葫芦岛设备id：1574947704562388992  1579374984009224192
+            devId = "1571801357315346432"
+
+        if rule_type == 0:
+            metric_list = []
+            for i in range(metric_info.__len__()):
+                data = {"metric": metric_info[i][0], "value": value}
+                metric_list.append(data)
+            metric_message = {"resume": "N",
+                              "productId": str(info1[0][0]),
+                              "devType": info1[0][2], "devId": devId,
+                              "debug": 0,
+                              "data": metric_list,
+                              "tenantId": info1[0][3],
+                              "version": "1.0",
+                              "ts": int(TimeUtils.get_current_timestamp())}
+            print("metric_message:", metric_message)
+            return metric_message
+        else:
+            metric_list = {}
+            for i in range(metric_info.__len__()):
+                # if i == 1:
+                #     value = 222
+                metric_list[metric_info[i][0]] = value
+            print(metric_list)
+            sql = f'SELECT domain FROM rule_expression_variable WHERE rule_id={egni_ruleid} ;'
+            domain = DBUtils.get_db_info(NEW_ALM_DEV_DBCON, sql)[0][0]
+            event_message = {
+                "version": "0.0.1",
+                "identifier": domain,
+                "type": "info",
+                "devId": devId,
+                "devType": info1[0][2],
+                "productId": str(info1[0][0]),
+                "tenantId": info1[0][3],
+                "ts": int(TimeUtils.get_current_timestamp()),
+                "value": metric_list}
+            print("event_message", event_message)
+            return event_message
 
     @classmethod
     def get_iot_message(cls, ruleid, env='dev', total=0):
@@ -292,7 +356,8 @@ if __name__ == '__main__':
     # MessageUtils.get_apm_message(1475731876462333952)
     # MessageUtils.get_fn_message(998525905103761408, 20, 'dev')
     # MessageUtils.get_fn_message(1012012060443377664, 60)
-    MessageUtils.get_enigine_message(1579046651972538368, 60, 'enigne')
+    # MessageUtils.get_enigine_message(1579046651972538368, 60, 'enigne')
+    MessageUtils.get_new_alarm_message(1587717927956291584, 2, 60)
     # 设备掉线 WB01GD2211
     # MessageUtils.get_iot_message(1003717540105113600,env='prod', total=0)
     # MessageUtils.get_iot_message(1006247075699924992, env='dev', total=0)
